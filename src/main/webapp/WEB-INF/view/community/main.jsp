@@ -8,20 +8,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
-	type="text/javascript"></script>
+
+<script type="text/javascript" src="<c:url value=" /static/js/jquery-3.3.1.min.js" />" ></script>
 <script type="text/javascript">
+
 	$().ready(function() {
 
 		$("#writeBtn").click(function() {
-
 			var writeForm = $("#writeForm");
 			writeForm.attr({
 				"method" : "post",
 				"action" : "<c:url value="/write"/>"
-
 			});
-
 			writeForm.submit();
 		});
 
@@ -35,6 +33,7 @@
 		});
 
 	});
+	
 </script>
 
 </head>

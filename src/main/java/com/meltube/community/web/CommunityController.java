@@ -25,7 +25,7 @@ public class CommunityController {
 	public void setCommunityService(CommunityService communityService) {
 		this.communityService = communityService;
 	}
-
+//adsf
 	/////////////////////// 메인화면 보기 ///////////////////////////////////
 	@RequestMapping("/")
 	public ModelAndView viewListPage() {

@@ -9,22 +9,23 @@
   
   	<resultMap type="CommunityVO" id="CommunityVOMap">
   		<id column="ID" property="id" />
-  		<result column="lIKE_IT" property="likeit" />
-  		<result column="TITLE" property="title" />
+  		<result column="lIKE_IT" property="likeIt" />
   		<result column="USER_ID" property="userId" />
+		<result column="TITLE" property="title" />
   		<result column="LYRICS" property="lyrics" />
-  		<result column="ALBUM_NAME" property="albumName" />
-  		<result column="GENRE" property="genre" />
-  		
   		<result column="RELEASE_DATE" property="releaseDate" />
-  		
   		<result column="REQUEST_IP" property="requestIp" />
+  		<result column="SINGER" property="singer" />
+  		<result column="ALBUM" property="album" />
+  		<result column="GENRE" property="genre" />
   		<result column="DISPLAY_FILE_NAME" property="displayFilename" />
   		<!-- 결과를 다른 객체에 할당
   			자바타입은 경로 적어주는건데 이미 우리는 마이배티스에 적어줘서 저렇게 해줌 -->
   		<association property="memberVO" javaType="memberVO">
   			<id column="M_ID" property="id"/>
   			<result column="NICKNAME" property="nickname"/>
+  			<result column="PASSWORD" property="password"/>
+  			<result column="EMAIL" property="email"/>
   			<result column="REGIST_DATE" property="registDate"/>
   		</association>
   	</resultMap>
@@ -56,23 +57,28 @@
   	<insert id="insertCommunity" parameterType="CommunityVO">
 		INSERT	INTO COMMUNITY (
 			ID
+			, lIKE_IT
+			, USER_ID
 			, TITLE
 			, LYRICS
-			, USER_ID
 			, RELEASE_DATE
-			, RECOMMEND_COUNT
 			, REQUEST_IP
-			, DISPLAY_FILE_NAME			
+			, SINGER
+			, ALBUM
+			, GENRE
+			, DISPLAY_FILE_NAME				
 		)
 		VALUES	(
 			COMMUNITY_ID_SEQ.NEXTVAL
-			, #{title}
-			, #{body}
+			, 0
 			, #{userId}
+			, #{title}
+			, #{lyrics}
 			, SYSDATE
-			, 0
-			, 0
 			, #{requestIp}
+			, #{singer}
+			, #{album}
+			, #{genre}
 			, #{displayFilename}
 		)  		
   	</insert>
