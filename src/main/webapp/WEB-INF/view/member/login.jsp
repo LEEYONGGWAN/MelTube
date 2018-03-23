@@ -8,7 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 	<input type="text" id="title" name="title" placeholder="ID" value="${communityVO.title}" />
 </body>
+
 </html>

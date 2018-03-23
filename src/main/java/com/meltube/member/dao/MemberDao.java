@@ -9,8 +9,6 @@ public interface MemberDao {
 		
 	public int insertMember(MemberVO memberVO);
 	
-	public String selectSalt(String email);
-	
 	public MemberVO selectMember(MemberVO memberVO);
 	
 	public int deleteMember(int id);	

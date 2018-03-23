@@ -1,6 +1,7 @@
 package com.meltube.member.vo;
 
 public class MemberVO {
+	
 	private String id;
 	private String nickname;
 	private String password;

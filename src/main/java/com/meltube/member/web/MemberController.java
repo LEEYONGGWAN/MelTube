@@ -11,61 +11,98 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.meltube.community.service.CommunityService;
 import com.meltube.member.constants.Member;
+import com.meltube.member.service.MemberService;
 import com.meltube.member.vo.MemberVO;
 
 @Controller
 public class MemberController {
 
+	private MemberService memberService;
+	private CommunityService communityService;
+	
+	public void setMemberService(MemberService memberService) {
+		this.memberService = memberService;
+	}
+
+	public void setCommunityService(CommunityService communityService) {
+		this.communityService = communityService;
+	}
+	
+	
+	
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String viewLoginPage(HttpSession session) {
 
 		if (session.getAttribute(Member.USER) != null) {
 			return "redirect:/";
 		}
-
-		return "member/login";
+		return "community/main";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView doLoginAction(@ModelAttribute("loginForm") @Valid MemberVO memberVO, Errors errors, HttpServletRequest request) {
+	public String doLoginAction(MemberVO memberVO, Errors errors, HttpServletRequest request) {
+		
 		HttpSession session = request.getSession();
-		
-/*		if (memberVO.getId() == null || memberVO.getId().length() == 0) {
-			session.setAttribute("status", "emptyId");
-			return new ModelAndView("redirect:/login");
 
-		}
+		System.out.println("들어옴");
 		
-		if (memberVO.getPassword() == null || memberVO.getPassword().length() == 0) {
-			session.setAttribute("status", "emptyPassword");
-			return new ModelAndView("redirect:/login");
-		}*/
-
-		if(errors.hasErrors()) {
-			ModelAndView view = new ModelAndView();
-			view.setViewName("member/login");
-			view.addObject("MemberVO", memberVO);
-			return view;
-		}
+		// DB에 계정이 존재하지 않을 경우로 변경
+		// db에 있는 정보에서 멤버를 찾아서 로그인멤버에 넣어줌 만약에 디비에 아무것도 없으면 null값임
+		MemberVO loginMember = memberService.readMember(memberVO);
 		
 		
-		if (memberVO.getId().equals("admin") && memberVO.getPassword().equals("1234")) {
-
-			memberVO.setNickname("관리자");
-			session.setAttribute(Member.USER, memberVO);
-
-			session.removeAttribute("status");
-
-			return new ModelAndView("redirect:/");
+		if (loginMember != null) {
+			System.out.println("들어옴2");
+			session.setAttribute(Member.USER, loginMember);
+			return "redirect:/";
 		}
 
-		session.setAttribute("status", "fail");
-
-		return new ModelAndView("redirect:/login");
+		return "redirect:/login";
 
 	}
 
+	
+	
+	
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String viewRegistPage() {
+
+		return "member/regist";
+	}
+
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	public ModelAndView doRegistAction(@ModelAttribute("registForm") @Valid MemberVO memberVO, Errors errors) {
+
+		System.out.println("들어옴");
+		
+		if (errors.hasErrors()) {
+			return new ModelAndView("member/join");
+		}
+		
+		if (memberService.createMember(memberVO)) {
+			return new ModelAndView("redirect:/login");
+		}
+		
+		return new ModelAndView("member/join");
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/logout")
 	public String doLogoutAction(HttpSession session) {
 

@@ -13,6 +13,16 @@
 <script type="text/javascript">
 
 	$().ready(function() {
+		
+		$("#loginBtn").click(function() {
+			var loginForm = $("#loginForm");
+			loginForm.attr({
+				"method" : "post",
+				"action" : "<c:url value="/login"/>"
+			});
+			loginForm.submit();
+		});
+		
 
 		$("#writeBtn").click(function() {
 			var writeForm = $("#writeForm");
@@ -27,7 +37,7 @@
 		$("#goToWrite").click(function() {
 			$(location).attr("href", "<c:url value="/write"/>");
 		});
-
+		//회원가입
 		$("#join").click(function() {
 			$(location).attr("href", "<c:url value="/join"/>");
 		});
@@ -83,7 +93,7 @@
 		<div
 			style="display: inline-block; vertical-align: top; width: 330px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
 
-
+			<form id="loginForm">
 			<!-- 로그인 박스-->
 			<div>
 				<div style="display: inline-block; width: 2300px">
@@ -101,7 +111,8 @@
 				<div style="display: inline-block; width: 90x; vertical-align: top;">
 					<input type="button" id="loginBtn" value="로그인" />
 				</div>
-
+			</form>
+			
 				<div>
 					<input type="button" id="join" value="회원가입" />
 				</div>

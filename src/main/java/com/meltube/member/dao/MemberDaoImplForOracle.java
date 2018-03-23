@@ -21,14 +21,11 @@ public class MemberDaoImplForOracle extends SqlSessionDaoSupport implements Memb
 		return getSqlSession().insert("MemberDao.insertMember", memberVO);
 	}
 
-	@Override
-	public String selectSalt(String email) {
-		return null;
-	}
-
+	
+	//로그인 하는 메소드
 	@Override
 	public MemberVO selectMember(MemberVO memberVO) {
-		return null;
+		return getSqlSession().selectOne("MemberDao.selectMember", memberVO);
 	}
 
 	@Override
