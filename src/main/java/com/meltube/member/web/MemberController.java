@@ -46,8 +46,6 @@ public class MemberController {
 	public String doLoginAction(MemberVO memberVO, Errors errors, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
-
-		System.out.println("들어옴la");
 		
 		// DB에 계정이 존재하지 않을 경우로 변경
 		// db에 있는 정보에서 멤버를 찾아서 로그인멤버에 넣어줌 만약에 디비에 아무것도 없으면 null값임
@@ -55,9 +53,10 @@ public class MemberController {
 		
 		
 		if (loginMember != null) {
-			System.out.println("들어옴la2");
+			
 			session.setAttribute(Member.USER, loginMember);
-			return "redirect:/";
+			System.out.println("로긴 성공");
+			return "member/login";
 		}
 
 		return "redirect:/login";
@@ -76,7 +75,6 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public ModelAndView doRegistAction(@ModelAttribute("registForm") @Valid MemberVO memberVO, Errors errors) {
 
-		System.out.println("들어옴");
 		
 		if (errors.hasErrors()) {
 			return new ModelAndView("member/join");
@@ -84,14 +82,11 @@ public class MemberController {
 		
 		System.out.println(memberVO.getNickname());
 		System.out.println(memberVO.getPassword());
-		System.out.println("들어옴2");
 
 		if (memberService.createMember(memberVO)) {
-			System.out.println("어디서 문제야");
 			return new ModelAndView("redirect:/login");
 		}
 		
-		System.out.println("들어옴3");
 		return new ModelAndView("member/join");
 	}
 

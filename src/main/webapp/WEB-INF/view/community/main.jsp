@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -15,6 +14,7 @@
 	$().ready(function() {
 		
 		$("#loginBtn").click(function() {
+			
 			var loginForm = $("#loginForm");
 			loginForm.attr({
 				"method" : "post",
@@ -93,25 +93,27 @@
 		<div
 			style="display: inline-block; vertical-align: top; width: 330px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
 
-			<form id="loginForm">
-			<!-- 로그인 박스-->
-			<div>
-				<div style="display: inline-block; width: 2300px">
+				<form:form modelAttribute="loginForm">
+					<!-- 로그인 박스-->
 					<div>
-						ID : <input type="text" id="id" name="id" placeholder="ID" />
-					</div>
-
-					<div>
-						PW : <input type="password" id="password" name="password"
-							placeholder="Password" />
-					</div>
-
-				</div>
-
-				<div style="display: inline-block; width: 90x; vertical-align: top;">
-					<input type="button" id="loginBtn" value="로그인" />
-				</div>
-			</form>
+						<div style="display: inline-block; width: 2300px">
+							<div>
+								ID : <input type="text" id="id" name="id" placeholder="ID" />
+							</div>
+	
+							<div>
+								PW : <input type="password" id="password" name="password" placeholder="Password" />
+							</div>
+	
+						</div>
+	
+						<div style="display: inline-block; width: 90x; vertical-align: top;">
+							<input type="button" id="loginBtn" value="로그인" />
+						</div>
+					</div>	
+				</form:form>
+			
+			
 			
 				<div>
 					<input type="button" id="join" value="회원가입" />
@@ -119,11 +121,9 @@
 
 			</div>
 
-			<div style></div>
 
 			<!-- 좋아요 많은곡 -->
-			<div
-				style="vertical-align: top; width: 330px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
+			<div style="vertical-align: top; width: 330px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
 				<div>좋아요 많은 랭킹</div>
 			</div>
 
