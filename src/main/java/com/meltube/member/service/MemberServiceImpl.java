@@ -28,8 +28,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean createMember(MemberVO member) {
-		return false;
+	public boolean createMember(MemberVO memberVO) {
+		
+		System.out.println("createMember 들어옴");
+		return memberDao.insertMember(memberVO) > 0;
 	}
 
 	@Override

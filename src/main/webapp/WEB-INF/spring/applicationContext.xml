@@ -17,18 +17,6 @@
 	</bean>
 
 
-	<bean id="CommunityDao" class="com.meltube.community.dao.CommunityDaoImpl"></bean>
-
-	<bean id="CommunityService" class="com.meltube.community.service.CommunityServiceImpl">
-		<property name="communityDao" ref="CommunityDao"></property>
-	</bean>
-	
-	<bean id="CommunityController" class="com.meltube.community.web.CommunityController">
-		<property name="communityService" ref="CommunityService"></property>
-	</bean>
-
-	<bean id="MemberController" class="com.meltube.member.web.MemberController">
-	
-	</bean>
+	<import resource="controllerContext.xml"/>
 
 </beans>

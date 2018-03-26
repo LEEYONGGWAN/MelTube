@@ -13,7 +13,7 @@
 
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
 
-		<property name="username" value="meltube" />
+		<property name="username" value="MELTUBE" />
 		<property name="password" value="meltube" />
 
 	</bean>

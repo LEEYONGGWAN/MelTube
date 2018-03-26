@@ -7,10 +7,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript"  src="<c:url value="/static/js/jquery-3.3.1.min.js" />"></script>
+<script type="text/javascript">
+	$().ready(function() {
+		alert("ok");
+	})
+	
+</script>
+
 </head>
 
 <body>
-	<input type="text" id="title" name="title" placeholder="ID" value="${communityVO.title}" />
+		
 </body>
 
 </html>
