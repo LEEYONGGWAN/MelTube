@@ -49,14 +49,20 @@ public class MemberController {
 		
 		// DB에 계정이 존재하지 않을 경우로 변경
 		// db에 있는 정보에서 멤버를 찾아서 로그인멤버에 넣어줌 만약에 디비에 아무것도 없으면 null값임
+		
+		System.out.println("로그인액션 들어옴");
+		System.out.println("ZZZZZZZZZZZZ" + memberVO.getEmail());
+		System.out.println("ZZZZZZZZZZZZ" + memberVO.getId());
+		
 		MemberVO loginMember = memberService.readMember(memberVO);
-		
-		
+	
+
+	
 		if (loginMember != null) {
 			
 			session.setAttribute(Member.USER, loginMember);
 			System.out.println("로긴 성공");
-			return "member/login";
+			return "community/main";
 		}
 
 		return "redirect:/login";

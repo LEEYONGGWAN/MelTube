@@ -24,7 +24,7 @@
 <body>
 
 	
-	<div id="wrapper">
+	<div id="wrapper" style="text-align:center;">
 		<form:form modelAttribute="registForm">
 			<div>
 				<input type="email" id="email" name="email" placeholder="Email" />
