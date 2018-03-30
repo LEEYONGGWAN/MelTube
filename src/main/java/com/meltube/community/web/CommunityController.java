@@ -31,13 +31,16 @@ public class CommunityController {
 
 		ModelAndView view = new ModelAndView();
 
-		// /WEB-INF/view/community/list.jsp
+		// /WEB-INF/view/community/main.jsp
 		view.setViewName("community/main");
 
 		List<CommunityVO> singList = communityService.getAll();
+		
+			System.out.println(" 리스트에 들어있는 값들이야"   +singList.toString());
+		
+		
 		view.addObject("communityList", singList);
-
-		System.out.println();
+		
 		return view;
 	}
 	////////////////////////////////////////////////////////////////////////
@@ -51,11 +54,22 @@ public class CommunityController {
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public ModelAndView doWrite(@ModelAttribute("writeForm") @Valid CommunityVO communityVO, Errors errors,
 			HttpSession session, HttpServletRequest request) {
+		
+		System.out.println("write 들어옴");
+		
 
+		String requestIp = request.getRemoteAddr();
+		communityVO.setRequestIp(requestIp);
+		
+		System.out.println(communityVO);
+		
 		boolean isSuccess = communityService.createCommunity(communityVO);
-
+		
+		
+		
 		// 만약에 글쓰기 등록이 완료 되었다면~ 리스트로 정보 보내고 다시 가겠다.
 		if (isSuccess) {
+			//return new ModelAndView("redirect:/");
 			return new ModelAndView("redirect:/");
 
 		}
@@ -96,10 +110,5 @@ public class CommunityController {
 		return view;
 	}
 	//////////////////////////////////////////////////////////////////////////
-	
-	
-	
-	
-	
 
 }

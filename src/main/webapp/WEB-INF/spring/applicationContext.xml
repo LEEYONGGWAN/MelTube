@@ -6,7 +6,7 @@
 
 	<mvc:annotation-driven />
 
-	<mvc:resources location="/static/**" mapping="/WEB-INF/static" />
+	<mvc:resources location="/WEB-INF/static/" mapping="/static/**" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

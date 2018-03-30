@@ -1,4 +1,4 @@
-package com.meltube.community.dao;
+/*package com.meltube.community.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,3 +67,4 @@ public class CommunityDaoImpl implements CommunityDao {
 	}
 
 }
+*/

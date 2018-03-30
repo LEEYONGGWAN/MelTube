@@ -57,7 +57,6 @@
   	<insert id="insertCommunity" parameterType="CommunityVO">
 		INSERT	INTO COMMUNITY (
 			ID
-			, lIKE_IT
 			, USER_ID
 			, TITLE
 			, LYRICS
@@ -66,11 +65,9 @@
 			, SINGER
 			, ALBUM
 			, GENRE
-			, DISPLAY_FILE_NAME				
 		)
 		VALUES	(
 			COMMUNITY_ID_SEQ.NEXTVAL
-			, 0
 			, #{userId}
 			, #{title}
 			, #{lyrics}
@@ -79,7 +76,6 @@
 			, #{singer}
 			, #{album}
 			, #{genre}
-			, #{displayFilename}
 		)  		
   	</insert>
   	

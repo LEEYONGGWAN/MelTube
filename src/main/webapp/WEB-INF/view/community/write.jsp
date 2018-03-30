@@ -46,6 +46,13 @@
 		</div>
 
 		<div>
+			앨범명 : <input type="text" id="album" name="album" placeholder="앨범"
+							value="${communityVO.album}"/>
+		</div>
+		
+		
+
+		<div>
 			장 르 : <input type="text" id="genre" name="genre" placeholder="장르"
 				value="${communityVO.genre}" />
 		</div>
