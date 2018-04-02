@@ -48,8 +48,10 @@
 </head>
 <body>
 	<!-- 큰틀 -->
-	<div
-		style="display: inline-block; width: 1200px; height: 1000px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
+	<div style="display: inline-block; width: 1200px; height: 1000px; 
+		 border-top: 1px solid #000; border-left: 1px solid #000; 
+		 border-bottom: 1px solid #000; border-right: 1px solid #000;">
+		 
 		<!-- 왼쪽 리스트 칸-->
 
 		<div
@@ -89,8 +91,9 @@
 		</div>
 
 		<!-- 오른쪽 아이디&좋아요 많은곡  -->
-		<div
-			style="display: inline-block; vertical-align: top; width: 330px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
+		<div style="display: inline-block; vertical-align: top; width: 330px; 
+			 border-top: 1px solid #000; border-left: 1px solid #000; 
+			 border-bottom: 1px solid #000; border-right: 1px solid #000;">
 
 			<form:form modelAttribute="loginForm">
 				<!-- 로그인 박스-->
@@ -109,8 +112,7 @@
 							</div>
 
 
-							<div
-								style="display: inline-block; width: 90x; vertical-align: top;">
+							<div style="display: inline-block; width: 90x; vertical-align: top;">
 								<input type="button" id="loginBtn" value="로그인" />
 							</div>
 
@@ -137,23 +139,23 @@
 				</div>
 			</form:form>
 
-
+					<!-- 좋아요 많은곡 -->
+				<div style="vertical-align: top; width: 330px; 
+					 border-top: 1px solid #000; border-left: 1px solid #000; 
+					 border-bottom: 1px solid #000; border-right: 1px solid #000;">
+					<div>좋아요 많은 랭킹</div>
+				</div>
 
 
 
 		</div>
 
 
-		<!-- 좋아요 많은곡 -->
-		<div
-			style="vertical-align: top; width: 330px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
-			<div>좋아요 많은 랭킹</div>
-		</div>
+		
 
 
 	</div>
 
 
-	</div>
 </body>
 </html>

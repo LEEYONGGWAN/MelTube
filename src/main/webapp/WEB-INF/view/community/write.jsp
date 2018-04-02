@@ -72,7 +72,10 @@
 			<textarea id="lyrics" name="lyrics" placeholder="가사"
 				value="${communityVO.lyrics}"></textarea>
 		</div>
-
+		
+		<div>
+			<input type="text" id="userId" name="userId" value="${sessionScope.__USER__.id}"/>
+		</div>
 
 
 

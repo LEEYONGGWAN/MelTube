@@ -2,17 +2,19 @@ package com.meltube.member.vo;
 
 public class MemberVO {
 	
-	private String id;
+	private int id;
 	private String nickname;
 	private String password;
 	private String email;
-	private int registDate;
+	private String registDate;
 
-	public String getId() {
+
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -40,12 +42,14 @@ public class MemberVO {
 		this.email = email;
 	}
 
-	public int getRegistDate() {
+	public String getRegistDate() {
 		return registDate;
 	}
 
-	public void setRegistDate(int registDate) {
+	public void setRegistDate(String registDate) {
 		this.registDate = registDate;
 	}
+
+	
 
 }

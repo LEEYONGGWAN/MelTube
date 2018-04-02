@@ -10,6 +10,7 @@ public class CommunityDaoImplForOracle extends SqlSessionDaoSupport implements C
 
 	@Override
 	public List<CommunityVO> selectAll() {
+		System.out.println("selectAll 으로 들어옴");
 		return getSqlSession().selectList("CommunityDao.selectAll");
 	}
 

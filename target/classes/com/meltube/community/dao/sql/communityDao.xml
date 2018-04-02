@@ -54,6 +54,7 @@
   	</select>
   	
   	<!-- 밸류즈에서  -->
+  	<!--  글쓰기 부분 -->
   	<insert id="insertCommunity" parameterType="CommunityVO">
 		INSERT	INTO COMMUNITY (
 			ID

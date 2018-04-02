@@ -36,7 +36,7 @@ public class CommunityController {
 
 		List<CommunityVO> singList = communityService.getAll();
 		
-			System.out.println(" 리스트에 들어있는 값들이야"   +singList.toString());
+		//System.out.println(singList.set(index, genre));
 		
 		
 		view.addObject("communityList", singList);
@@ -44,6 +44,7 @@ public class CommunityController {
 		return view;
 	}
 	////////////////////////////////////////////////////////////////////////
+	
 	//////////////////글쓰기//////////////////////////////////////////////
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String viewWritePage() {
@@ -77,6 +78,7 @@ public class CommunityController {
 		return new ModelAndView("redirect:/write");
 	}
 	/////////////////////////////////////////////////////////////////////////////
+	
 	//////////////////////////글 눌렀을떄 보기///////////////////////////////////////
 	@RequestMapping("/recommend/{id}")
 	public String rCount(@PathVariable int id) {

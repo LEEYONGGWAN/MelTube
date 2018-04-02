@@ -26,7 +26,6 @@ public class CommunityServiceImpl implements CommunityService {
 	
 	@Override
 	public boolean createCommunity(CommunityVO communityVO) {
-		System.out.println("여기도 들어옴");
 		return communityDao.insertCommunity(communityVO) > 0;
 	}
 
