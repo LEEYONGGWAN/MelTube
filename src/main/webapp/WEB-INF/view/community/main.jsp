@@ -47,10 +47,18 @@
 
 </head>
 <body>
+
+	<div style=" width: 1200px; border-top: 1px solid #000; border-left: 1px solid #000; 
+		 border-bottom: 1px solid #000; border-right: 1px solid #000;">
+		<div>
+			<!-- img -->
+			<img src="<c:url value="/static/img/meltube.png"/>"	 style="width: 20px;" />
+		</div>
+	</div>
 	<!-- 큰틀 -->
 	<div style="display: inline-block; width: 1200px; height: 1000px; 
 		 border-top: 1px solid #000; border-left: 1px solid #000; 
-		 border-bottom: 1px solid #000; border-right: 1px solid #000;">
+		 border-bottom: 1px solid #000; border-right: 1px solid #000; background-color:#00FF7F">
 		 
 		<!-- 왼쪽 리스트 칸-->
 
