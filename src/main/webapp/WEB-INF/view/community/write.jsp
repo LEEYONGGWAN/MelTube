@@ -74,7 +74,7 @@
 		</div>
 		
 		<div>
-			<input type="text" id="userId" name="userId" value="${sessionScope.__USER__.id}"/>
+			<input type="hidden" id="userId" name="userId" value="${sessionScope.__USER__.id}"/>
 		</div>
 
 

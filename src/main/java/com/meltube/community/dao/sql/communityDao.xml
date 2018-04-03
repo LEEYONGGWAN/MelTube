@@ -39,9 +39,11 @@
 		SELECT  C.ID
   			    , C.LIKE_IT
   			    , C.TITLE
-  			    , C.USER_ID 
+  			    , C.USER_ID
+  			    , C.GENRE
+  			    , C.SINGER 
   			    , C.LYRICS
-  			    , TO_CHAR(C.RELEASE_DATE , 'YYYY-MM-DD HH24:MI:SS') RELEASE_DATE
+  			    , TO_CHAR(C.RELEASE_DATE , 'YYYY-MM-DD') RELEASE_DATE
   			    , C.REQUEST_IP 
   			    , C.DISPLAY_FILE_NAME
                 , M.ID M_ID

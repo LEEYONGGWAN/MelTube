@@ -69,13 +69,13 @@
 					<th>제목</th>
 					<th>가수</th>
 					<th>발매일</th>
-
+					<c:if test="${not empty sessionScope.__USER__ }">
 					<th><input type="button" id="goToWrite" value="노래 등록" /></th>
-
+					</c:if>
 				</tr>
 				<c:forEach items="${communityList}" var="community">
 					<tr>
-
+						
 						<td>${community.id}</td>
 						<td>${community.genre}</td>
 
