@@ -49,10 +49,10 @@
 <body>
 
 	<div style=" width: 1200px; border-top: 1px solid #000; border-left: 1px solid #000; 
-		 border-bottom: 1px solid #000; border-right: 1px solid #000;">
+		 border-right: 1px solid #000; background-color:#00FF7F">
 		<div>
 			<!-- img -->
-			<img src="<c:url value="/static/img/meltube.png"/>"	 style="width: 20px;" />
+			<img src="<c:url value="/static/img/mel.png"/>"	 style="width: 100px;" />
 		</div>
 	</div>
 	<!-- 큰틀 -->
@@ -124,7 +124,7 @@
 								<input type="button" id="loginBtn" value="로그인" />
 							</div>
 
-							<div>
+							<div  style="display: inline-block;">
 								<input type="button" id="join" value="회원가입" />
 							</div>
 
