@@ -48,28 +48,35 @@
 </head>
 <body>
 
-	<div style=" width: 1200px; border-top: 1px solid #000; border-left: 1px solid #000; 
-		 border-right: 1px solid #000; background-color:#00FF7F">
-		<div>
-			<!-- img -->
-			<img src="<c:url value="/static/img/mel.png"/>"	 style="width: 100px;" />
+
+	<div style="width: 1200px;">
+		<!-- img -->
+		<div style="margin-left: 20px">
+			<img src="<c:url value="/static/img/mel.png"/>" style="width: 100px;" />
 		</div>
+
 	</div>
+
+
+
 	<!-- 큰틀 -->
-	<div style="display: inline-block; width: 1200px; height: 1000px; 
-		 border-top: 1px solid #000; border-left: 1px solid #000; 
-		 border-bottom: 1px solid #000; border-right: 1px solid #000; background-color:#00FF7F">
-		 
+	<div
+		style="display: inline-block; width: 1400px; height: 1000px; border-top: 3px solid #333;">
+
 		<!-- 왼쪽 리스트 칸-->
 
-		<div
-			style="display: inline-block; vertical-align: top; width: 350px; height: 900px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
-
+		<div style="display: inline-block; vertical-align: top; width: 350px; height: 900px; margin-left: 20px; margin-top: 20px">
+			
+			<div style="text-align: center">장르별 보기</div>
+		
 		</div>
 
 		<!-- 가운데 최신곡 -->
 		<div
-			style="display: inline-block; vertical-align: top; width: 500px; border-top: 1px solid #000; border-left: 1px solid #000; border-bottom: 1px solid #000; border-right: 1px solid #000;">
+			style="display: inline-block; vertical-align: top; width: 500px; margin-left: 20px; margin-top: 20px">
+
+			<div style="text-align: center">새로나온 뮤비</div>
+
 			<table>
 				<tr>
 					<th>번호</th>
@@ -78,16 +85,16 @@
 					<th>가수</th>
 					<th>발매일</th>
 					<c:if test="${not empty sessionScope.__USER__ }">
-					<th><input type="button" id="goToWrite" value="노래 등록" /></th>
+						<th><input type="button" id="goToWrite" value="노래 등록" /></th>
 					</c:if>
 				</tr>
 				<c:forEach items="${communityList}" var="community">
 					<tr>
-						
+
 						<td>${community.id}</td>
 						<td>${community.genre}</td>
 
-						<td><a href="<c:url value="/read/${community.id}"/>">${community.title}</a></td>
+						<td><a href="<c:url value="/view/${community.id}"/>">${community.title}</a></td>
 
 						<td>${community.singer}</td>
 						<td>${community.releaseDate}</td>
@@ -99,9 +106,12 @@
 		</div>
 
 		<!-- 오른쪽 아이디&좋아요 많은곡  -->
-		<div style="display: inline-block; vertical-align: top; width: 330px; 
-			 border-top: 1px solid #000; border-left: 1px solid #000; 
-			 border-bottom: 1px solid #000; border-right: 1px solid #000;">
+		<div
+			style="display: inline-block; vertical-align: top; width: 330px; margin-left: 20px; margin-top: 20px">
+
+
+
+
 
 			<form:form modelAttribute="loginForm">
 				<!-- 로그인 박스-->
@@ -120,11 +130,12 @@
 							</div>
 
 
-							<div style="display: inline-block; width: 90x; vertical-align: top;">
+							<div
+								style="display: inline-block; width: 90x; vertical-align: top;">
 								<input type="button" id="loginBtn" value="로그인" />
 							</div>
 
-							<div  style="display: inline-block;">
+							<div style="display: inline-block;">
 								<input type="button" id="join" value="회원가입" />
 							</div>
 
@@ -147,20 +158,18 @@
 				</div>
 			</form:form>
 
-					<!-- 좋아요 많은곡 -->
-				<div style="vertical-align: top; width: 330px; 
-					 border-top: 1px solid #000; border-left: 1px solid #000; 
-					 border-bottom: 1px solid #000; border-right: 1px solid #000;">
-					<div>좋아요 많은 랭킹</div>
-				</div>
+			<!-- 좋아요 많은곡 -->
+			<div
+				style="vertical-align: top; width: 330px; border-top: 1px solid #000; margin-top: 10px">
+
+				<div style="margin-tipo: 10px">좋아요 랭킹</div>
+
+
+			</div>
 
 
 
 		</div>
-
-
-		
-
 
 	</div>
 

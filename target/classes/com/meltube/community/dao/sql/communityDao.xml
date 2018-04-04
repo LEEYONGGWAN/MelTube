@@ -97,16 +97,16 @@
   	</update>
   	
   	
-  	<select id="selectOne" parameterType= "_int" resultMap="CommunityVOMap">
+  	<select id="selectSing" parameterType= "_int" resultMap="CommunityVOMap">
   		SELECT  C.ID
   			    , C.TITLE
-  			    , C.BODY
+  			    , C.LYRICS
   			    , C.USER_ID 
-  			    , TO_CHAR(C.WRITE_DATE , 'YYYY-MM-DD HH24:MI:SS') WRITE_DATE
-  			    , C.VIEW_COUNT 
-  			    , C.RECOMMEND_COUNT
+  			    , TO_CHAR(C.RELEASE_DATE , 'YYYY-MM-DD') RELEASE_DATE
+  			    , LIKE_IT
   			    , C.REQUEST_IP 
   			    , C.DISPLAY_FILE_NAME
+  			    , GENRE
                 , M.ID M_ID
                 , M.EMAIL
                 , M.NICKNAME

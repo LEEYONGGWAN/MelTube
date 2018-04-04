@@ -16,7 +16,7 @@ public class CommunityDaoImplForOracle extends SqlSessionDaoSupport implements C
 
 	@Override
 	public CommunityVO selectSing(int id) {
-		return null;
+		return getSqlSession().selectOne("CommunityDao.selectSing", id);
 	}
 
 	@Override

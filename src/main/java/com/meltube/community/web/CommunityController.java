@@ -36,7 +36,6 @@ public class CommunityController {
 
 		List<CommunityVO> singList = communityService.getAll();
 		
-		//System.out.println(singList.set(index, genre));
 		
 		
 		view.addObject("communityList", singList);
@@ -99,6 +98,9 @@ public class CommunityController {
 		
 	}
 
+	
+	
+	
 	@RequestMapping("/view/{id}")
 	public ModelAndView viewViewPage(@PathVariable int id) {
 
