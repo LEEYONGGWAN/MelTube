@@ -41,4 +41,16 @@
 		WHERE	ID = #{id}	
 	</delete>
   
+  
+  <select id="selectCountMemberEmail" parameterType="string" resultType="_int">
+		SELECT	COUNT(ID)
+		FROM	MEMBER
+		WHERE	EMAIL = #{email}
+	</select>
+  	
+  	<select id="selectCountMemberNickname" parameterType="string" resultType="_int">
+  		SELECT COUNT(ID)
+  		FROM   MEMBER
+  		WHERE  NICKNAME = #{nickname}
+  	</select>	
   </mapper>

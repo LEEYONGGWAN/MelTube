@@ -1,5 +1,10 @@
 package com.meltube.community.vo;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import com.meltube.member.vo.MemberVO;
 
 public class CommunityVO {
@@ -17,6 +22,8 @@ public class CommunityVO {
 	
 	private String requestIp;
 	private String displayFilename;
+	private MultipartFile file;
+	
 	
 	private MemberVO memberVO;
 
@@ -101,6 +108,10 @@ public class CommunityVO {
 	}
 
 	public String getDisplayFilename() {
+		if (displayFilename == null) {
+			displayFilename = "";
+		}
+		
 		return displayFilename;
 	}
 
@@ -116,4 +127,30 @@ public class CommunityVO {
 		this.memberVO = memberVO;
 	}
 
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+	public String save() {
+		if (file != null && !file.isEmpty()) {
+
+			displayFilename = file.getOriginalFilename();
+
+			File newFile = new File("D:\\uploadFiles/" + file.getOriginalFilename());
+			try {
+				file.transferTo(newFile);
+				return newFile.getAbsolutePath();
+			} catch (IllegalStateException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			} catch (IOException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+		}
+		return null;
+	}
+	
 }

@@ -10,7 +10,6 @@ public class CommunityDaoImplForOracle extends SqlSessionDaoSupport implements C
 
 	@Override
 	public List<CommunityVO> selectAll() {
-		System.out.println("selectAll 으로 들어옴");
 		return getSqlSession().selectList("CommunityDao.selectAll");
 	}
 
@@ -32,14 +31,18 @@ public class CommunityDaoImplForOracle extends SqlSessionDaoSupport implements C
 
 	@Override
 	public int incrementRCount(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return getSqlSession().update("CommunityDao.incrementRCount", id);
 	}
 
 	@Override
 	public int incrementViewCount(int id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<CommunityVO> sortAll() {
+		return getSqlSession().selectList("CommunityDao.sortAll");
 	}
 
 

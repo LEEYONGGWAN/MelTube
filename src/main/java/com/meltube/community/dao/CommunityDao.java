@@ -8,6 +8,10 @@ public interface CommunityDao {
 
 	public List<CommunityVO> selectAll();
 	
+	
+	//오른쪽 좋아요 순 노래
+	public List<CommunityVO> sortAll();
+	
 	public CommunityVO selectSing(int id);
 
 	public CommunityVO selectGenre(int id);	

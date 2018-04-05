@@ -55,7 +55,31 @@
   		ORDER   BY C.ID DESC
   	</select>
   	
+  	<select id="sortAll" resultMap="CommunityVOMap">
+  				SELECT  C.ID
+  			    , C.LIKE_IT
+  			    , C.TITLE
+  			    , C.USER_ID
+  			    , C.GENRE
+  			    , C.SINGER 
+  			    , C.LYRICS
+  			    , TO_CHAR(C.RELEASE_DATE , 'YYYY-MM-DD') RELEASE_DATE
+  			    , C.REQUEST_IP 
+  			    , C.DISPLAY_FILE_NAME
+                , M.ID M_ID
+                , M.NICKNAME
+                , M.REGIST_DATE
+  		FROM	COMMUNITY C
+  			    , MEMBER M
+  		WHERE   C.USER_ID = M.ID	   
+  		ORDER   BY C.LIKE_IT DESC
+  	</select>
+  	
+  	
+  	
+  	
   	<!-- 밸류즈에서  -->
+  	
   	<!--  글쓰기 부분 -->
   	<insert id="insertCommunity" parameterType="CommunityVO">
 		INSERT	INTO COMMUNITY (
@@ -68,6 +92,7 @@
 			, SINGER
 			, ALBUM
 			, GENRE
+			, DISPLAY_FILE_NAME
 		)
 		VALUES	(
 			COMMUNITY_ID_SEQ.NEXTVAL
@@ -79,6 +104,7 @@
 			, #{singer}
 			, #{album}
 			, #{genre}
+			, #{displayFilename}
 		)  		
   	</insert>
   	
@@ -92,7 +118,7 @@
   	
   	<update id="incrementRCount" parameterType="_int">
   		UPDATE	COMMUNITY
-  		SET		RECOMMEND_COUNT = RECOMMEND_COUNT + 1
+  		SET		lIKE_IT = lIKE_IT + 1
   		WHERE	ID = #{id}
   	</update>
   	

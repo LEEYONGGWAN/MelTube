@@ -3,27 +3,205 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/static/css/button.css"/>" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/static/css/input.css"/>" />
+
+
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js" />"  ></script>
 <script type="text/javascript">
 	$().ready(function() {
-		$("#registBtn").click(function() {
-			$("#registForm").attr({
-				"method" : "post",
-				"action" : "<c:url value="/join"/>"
-			}).submit();
+		
+		$("#email").keyup(function() {
+			var value = $(this).val();
+
+			if (value != "") {
+
+				//ajax Call(http://localhost:8080/api/exists/email)
+				//가운데 {}는 우리가 받고자하는 객체 -- 여기서 value 는 위에 var value = $(this).val(); 요거임
+				// 저 url로 가서 리스펀스를 받으면 함수 실행 저기 response는 정해진거 아니고 맘대로 써도됨~ 실무에선 data라고 많이씀
+				$.post("<c:url value="/api/exists/email"  />", { email : value }, function(response) {
+					//console.log(response.response);
+
+					if (response.response) {
+						$("#email").removeClass("valid");
+						$("#email").addClass("invalid");
+					} else {
+						$("#email").removeClass("invalid");
+						$("#email").addClass("valid");
+					}
+				});
+				$(this).removeClass("invalid");
+				$(this).addClass("valid");
+			} else {
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");
+			}
+
 		});
+
+		$("#nickname").keyup(function() {
+			var value = $(this).val();
+			if (value != "") {
+				$.post("<c:url value="/api/exists/nickname" />", { nickname : value }, function(response) {
+					//console.log(response.response)
+
+					if (response.response) {
+						$("#nickname").removeClass("valid");
+						$("#nickname").addClass("invalid");
+					} else {
+						$("#nickname").removeClass("invalid");
+						$("#nickname").addClass("valid");
+					}
+				});
+				$(this).removeClass("invalid");
+				$(this).addClass("valid");
+
+			} else {
+
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");
+
+			}
+
+		});
+  
+		
+		
+		$("#password").keyup(function() {
+			
+			var value = $(this).val();
+			
+			if (value != "") {
+
+				$(this).removeClass("invalid");
+				$(this).addClass("valid");
+
+			} else {
+
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");
+
+			}
+
+			var password = $("#password-confirm").val();
+
+			if (value != password) {
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");
+				$("#password-confirm").removeClass("valid");
+				$("#password-confirm").addClass("invalid");
+			} else {
+				$(this).removeClass("invalid");
+				$(this).addClass("valid");
+				$("#password-confirm").removeClass("invalid");
+				$("#password-confirm").addClass("valid");
+
+			}
+
+		});
+
+		$("#password-confirm").keyup(function() {
+			
+			var value = $(this).val();
+			
+			var password = $("#password").val();
+
+			if (value != password) {
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");
+				$("#password").removeClass("valid");
+				$("#password").addClass("invalid");
+			} 
+			
+			else {
+				$(this).removeClass("invalid");
+				$(this).addClass("valid");
+				$("#password").removeClass("invalid");
+				$("#password").addClass("valid");
+
+			}
+		});
+
+		$("#registBtn").click(function() {
+
+			if ($("#email").val() == "") {
+				alert("email을 입력하세요");
+				$("#email").focus();
+				$("#email").addClass("invalid");
+				return false;
+			}
+
+			if ($("#email").hasClass("invalid")) {
+				alert("이미 사용중인 이메일 입니다.");
+				$("#email").focus();
+				return false;
+			}
+			
+			if ($("#nickname").hasClass("invalid")) {
+				alert("이미 사용중인 닉네임 입니다.");
+				$("#nickname").focus();
+				return false;
+			}
+			
+			
+			
+
+			else {
+
+				$.post("<c:url value="/api/exists/email"  />", { email : $("#email").val() }, function(response) {
+
+					if (response.response) {
+						alert("이미 사용중인 이메일 입니다.");
+						$("#email").removeClass("valid");
+						$("#email").addClass("invalid");
+						$("#email").focus();
+						return false;
+					}
+					
+					if ($("#nickname").val() == "") {
+						alert("nickname을 입력하세요");
+						$("#nickname").focus();
+						$("#nickname").addClass("invalid");
+						return false;
+					}
+
+					if ($("#password").val() == "") {
+						alert("password을 입력하세요");
+						$("#password").focus();
+						$("#password").addClass("invalid");
+						return false;
+					}
+
+					
+					$("#registForm").attr({
+						"method" : "post",
+						"action" : "<c:url value="/join"/>"
+					}).submit();
+				
+					
+				});  //ajax 끝
+
+			}//else끝
+			
+
+		});//버튼 끝
+		
+	
 	});
 </script>
 
 </head>
 <body>
 
-	
+	<jsp:include page="/WEB-INF/view/template/menu.jsp"/>
 	<div id="wrapper" style="text-align:center;">
 		<form:form modelAttribute="registForm">
 			<div>
@@ -45,7 +223,6 @@
 			<div style="text-align: center;">
 				<input type="button" id="registBtn" value="회원가입"/>
 			</div>
-
 		</form:form>
 	</div>
 	

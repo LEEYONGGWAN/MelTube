@@ -16,6 +16,17 @@
 
 		$("#loginBtn").click(function() {
 
+			if( $("#email").val() == ""  ){
+				alert("아이디를 입력해주세요!");
+				$(location).attr("href", "<c:url value="/"/>");
+				
+			}
+			 	
+			else if( $("#password").val() == "" ){
+				alert("비밀번호를 입력해주세요!");
+				$(location).attr("href", "<c:url value="/"/>");
+			}	
+			
 			var loginForm = $("#loginForm");
 			loginForm.attr({
 				"method" : "post",
@@ -51,9 +62,7 @@
 
 	<div style="width: 1200px;">
 		<!-- img -->
-		<div style="margin-left: 20px">
-			<img src="<c:url value="/static/img/mel.png"/>" style="width: 100px;" />
-		</div>
+		<jsp:include page="/WEB-INF/view/template/menu.jsp"/>
 
 	</div>
 
@@ -61,14 +70,15 @@
 
 	<!-- 큰틀 -->
 	<div
-		style="display: inline-block; width: 1400px; height: 1000px; border-top: 3px solid #333;">
+		style="display: inline-block; width: 1800px; height: 1000px;">
 
 		<!-- 왼쪽 리스트 칸-->
 
-		<div style="display: inline-block; vertical-align: top; width: 350px; height: 900px; margin-left: 20px; margin-top: 20px">
-			
+		<div
+			style="display: inline-block; vertical-align: top; width: 200px; height: 900px; margin-left: 20px; margin-top: 20px">
+
 			<div style="text-align: center">장르별 보기</div>
-		
+
 		</div>
 
 		<!-- 가운데 최신곡 -->
@@ -79,7 +89,6 @@
 
 			<table>
 				<tr>
-					<th>번호</th>
 					<th>장르</th>
 					<th>제목</th>
 					<th>가수</th>
@@ -91,23 +100,22 @@
 				<c:forEach items="${communityList}" var="community">
 					<tr>
 
-						<td>${community.id}</td>
-						<td>${community.genre}</td>
+						<td style="text-align:center">${community.genre}</td>
 
-						<td><a href="<c:url value="/view/${community.id}"/>">${community.title}</a></td>
+						<td style="text-align:center"><a href="<c:url value="/view/${community.id}"/>">${community.title}</a></td>
 
-						<td>${community.singer}</td>
-						<td>${community.releaseDate}</td>
+						<td style="text-align:center">${community.singer}</td>
+						<td style="text-align:center">${community.releaseDate}</td>
 					</tr>
 
 				</c:forEach>
 
 			</table>
 		</div>
-
+  
 		<!-- 오른쪽 아이디&좋아요 많은곡  -->
 		<div
-			style="display: inline-block; vertical-align: top; width: 330px; margin-left: 20px; margin-top: 20px">
+			style="display: inline-block; vertical-align: top; width: 400px; margin-left: 20px; margin-top: 20px">
 
 
 
@@ -116,9 +124,10 @@
 			<form:form modelAttribute="loginForm">
 				<!-- 로그인 박스-->
 				<div>
-					<div style="display: inline-block; width: 2300px">
+					<div style="display: inline-block; width: 400px">
 
 						<c:if test="${empty sessionScope.__USER__ }">
+
 							<div>
 								ID : <input type="text" id="email" name="email"
 									placeholder="ID(email)" />
@@ -141,28 +150,78 @@
 
 
 						</c:if>
+
+						<c:if test="${not empty sessionScope.__USER__ }">
+
+							<div>
+								${sessionScope.__USER__.nickname}님(${sessionScope.__USER__.email})
+							</div>
+
+							<div>환영합니다.</div>
+
+							<div>
+								<a href="<c:url value="/logout" />"> <input type="button" id="logout" value="로그아웃" />  </a>
+							</div>
+
+
+						</c:if>
+
+  
+
 					</div>
-
-					<c:if test="${not empty sessionScope.__USER__ }">
-						<div>
-							${sessionScope.__USER__.nickname}님(${sessionScope.__USER__.email})
-						</div>
-						<div>환영합니다.</div>
-
-						<div>
-							<input type="button" id="logout" value="로그아웃" />
-						</div>
-					</c:if>
-
-
 				</div>
 			</form:form>
-
+  
 			<!-- 좋아요 많은곡 -->
 			<div
-				style="vertical-align: top; width: 330px; border-top: 1px solid #000; margin-top: 10px">
+				style="vertical-align: top; width: 480px; border-top: 1px solid #000; margin-top: 10px">
 
-				<div style="margin-tipo: 10px">좋아요 랭킹</div>
+				<div style="text-align:center">좋아요 랭킹</div>
+
+
+				<table>
+				<tr>
+					<th>좋아요</th>
+					<th>장르</th>
+					<th>제목</th>
+					<th>가수</th>
+					
+				</tr>
+				<c:forEach items="${sortList}" var="sort">
+						
+					<tr>
+						<td style="text-align:center">${sort.likeIt} </td>
+						<td style="text-align:center">${sort.genre}</td>
+
+						<td style="text-align:center"><a href="<c:url value="/view/${sort.id}"/>">${sort.title}</a></td>
+
+						<td style="text-align:center">${sort.singer}</td>
+					</tr>
+
+				</c:forEach>
+
+			</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 			</div>

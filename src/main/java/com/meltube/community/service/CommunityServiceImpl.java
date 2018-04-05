@@ -13,10 +13,22 @@ public class CommunityServiceImpl implements CommunityService {
 		this.communityDao = communityDao;
 	}
 	
+	
+	
 	@Override
 	public List<CommunityVO> getAll() {
 		return communityDao.selectAll();
 	}
+	
+	
+	//오른쪽 좋아요순으로 데려오기
+	@Override
+	public List<CommunityVO> getLikeList() {
+		return communityDao.sortAll();
+	}
+	
+	
+	
 
 	@Override
 	public CommunityVO getOne(int id) {
@@ -47,4 +59,9 @@ public class CommunityServiceImpl implements CommunityService {
 		
 	}
 
+
+
+	
+	
+	
 }

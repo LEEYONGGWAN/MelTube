@@ -26,7 +26,7 @@
 
 
 <body>
-
+		<jsp:include page="/WEB-INF/view/template/menu.jsp"/>
 		<div id="wrapper">
 			
 			
@@ -53,8 +53,12 @@
 				가사
 			</div>
 			<p>${community.lyrics}</p>
-	 		<a href= "<c:url value="/"/>">뒤로가기</a>
-			<a href="<c:url value="/recommend/${community.id}"/>">  추천하기  </a>
+	 		<a href= "<c:url value="/"/>"> 
+	 			<input type="button" id="backBtn" value="뒤로가기"  /> 
+	 		</a>
+				<a href="<c:url value="/likeIt/${community.id}"/>">  
+					<input type="button" id="backBtn" value="좋아요♥ "  /> 
+				</a>
 			</div>	
 			
 		</div>

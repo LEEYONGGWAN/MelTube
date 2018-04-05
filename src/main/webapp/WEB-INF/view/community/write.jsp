@@ -16,6 +16,7 @@
 		$("#writeBtn").click(function() {
 
 			var writeForm = $("#writeForm");
+			console.log(file);
 			writeForm.attr({
 				"method" : "post",
 				"action" : "<c:url value="/write"/>"
@@ -31,15 +32,15 @@
       width: 50%;
       margin: 0 auto;
     }
-   
+    
 </style>
 
 </head>
 <body>
 
 	
-	<form:form id="writeForm">
-	<div id="wrapper" type="text-align:right">
+	<form:form id="writeForm" enctype="multipart/form-data">
+	<div id="wrapper" style="text-align:right">
 		<div>
 			제 목 : <input type="text" id="title" name="title" placeholder="제목"
 				value="${communityVO.title}" />
@@ -69,16 +70,17 @@
 
 		<div>
 			가 사 :
-			<textarea id="lyrics" name="lyrics" placeholder="가사"
-				value="${communityVO.lyrics}"></textarea>
+			<textarea id="lyrics" name="lyrics" placeholder="가사" value="${communityVO.lyrics}"></textarea>
 		</div>
 		
 		<div>
 			<input type="hidden" id="userId" name="userId" value="${sessionScope.__USER__.id}"/>
 		</div>
 
-
-
+		<div>
+			<input type="file" id="file" name="file"/>
+		</div>
+   
 		<div>
 			<input type="button" id="writeBtn" value="등록" />
 		</div>
