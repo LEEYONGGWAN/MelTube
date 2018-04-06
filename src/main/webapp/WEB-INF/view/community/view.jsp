@@ -26,7 +26,7 @@
 
 
 <body>
-		<jsp:include page="/WEB-INF/view/template/menu.jsp"/>
+		<jsp:include page="/WEB-INF/view/template/logo.jsp"/>
 		<div id="wrapper">
 			
 			
@@ -38,7 +38,9 @@
 			<div style="display:inline-block; width:440px;">
 			
 			<div>
-				<video controls autoplay style="width:400px; height:400px" src = "<c:url value="/static/video/${community.id}.mp4"/> "></video>				
+				<video controls autoplay style="width:400px; height:400px">
+					<source src="<c:url value="/get/${community.id}"/>" type="video/mp4">
+				</video>				
 			</div>
 			
 			<p>추천수 : ${community.likeIt} | 발매일 : ${community.releaseDate}</p>

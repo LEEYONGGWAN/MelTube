@@ -144,15 +144,19 @@ public class CommunityController {
 	@RequestMapping("/get/{id}")
 	public void download(@PathVariable int id, 
 			HttpServletRequest request, 
-			HttpServletResponse response
-			)
-	{
+			HttpServletResponse response) {
+		
 		CommunityVO community = communityService.getOne(id);
 		String filename = community.getDisplayFilename();
-	
+		System.out.println(filename);
+		System.out.println(community.getAlbum());
+		System.out.println(community.getDisplayFilename());
+		System.out.println(community.getGenre());
+		System.out.println(community.getTitle());
+		DownloadUtil download = new DownloadUtil("D:/uploadFiles/" + filename);
 		
-		DownloadUtil download = new DownloadUtil("D:\\uploadFiles/" + filename);
 		try {
+			System.out.println("try");
 			download.download(request, response, filename);
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException(e.getMessage(), e);

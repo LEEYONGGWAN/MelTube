@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.box > a{
+	cursor: pointer; 
+	color: #000000;
+	font-size : 18pt;
+}
+ 
+
+
+.box:HOVER > a{
+	color : #86E57F;
+	font-size : 18pt;
+}

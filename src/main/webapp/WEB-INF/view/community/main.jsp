@@ -62,8 +62,9 @@
 
 	<div style="width: 1200px;">
 		<!-- img -->
+		<jsp:include page="/WEB-INF/view/template/logo.jsp"/>
 		<jsp:include page="/WEB-INF/view/template/menu.jsp"/>
-
+		
 	</div>
 
 

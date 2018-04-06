@@ -201,7 +201,7 @@
 </head>
 <body>
 
-	<jsp:include page="/WEB-INF/view/template/menu.jsp"/>
+	<jsp:include page="/WEB-INF/view/template/logo.jsp"/>
 	<div id="wrapper" style="text-align:center;">
 		<form:form modelAttribute="registForm">
 			<div>

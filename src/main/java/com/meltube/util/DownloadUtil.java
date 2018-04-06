@@ -7,6 +7,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.WritableByteChannel;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,8 +31,12 @@ public class DownloadUtil {
 			throws UnsupportedEncodingException {
 
 		File downloadFile = new File(uploadPathWithFileName);
-
-		response.setContentType("application/download; charset=utf-8");
+		String mimeType = new MimetypesFileTypeMap().getContentType(downloadFile);
+		
+		
+		//response.setContentType("application/download; charset=utf-8");
+		response.setContentType(mimeType + "; charset=utf-8");
+		
 		response.setContentLength((int) downloadFile.length());
 
 		// 사용자의 브라우져 정보를 가져온다.
