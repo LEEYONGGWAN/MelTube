@@ -22,4 +22,17 @@ public interface CommunityDao {
 	
 	public int incrementViewCount(int id);
 
+	//회원탈퇴 할때 본인이 썼던 글 지우는 부분
+	public int deleteCommunities(List<Integer> ids, int userId);
+	
+	public int selectMyCommunitiesCount(int userId);
+	
+	public int deleteMyCommunities(int userId);
+	
+	
+	
+	
+
+	
+	
 }

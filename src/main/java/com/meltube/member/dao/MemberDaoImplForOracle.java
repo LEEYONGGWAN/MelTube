@@ -30,7 +30,7 @@ public class MemberDaoImplForOracle extends SqlSessionDaoSupport implements Memb
 
 	@Override
 	public int deleteMember(int id) {
-		return 0;
+		return getSqlSession().delete("MemberDao.deleteMember", id);
 	}
 
 }

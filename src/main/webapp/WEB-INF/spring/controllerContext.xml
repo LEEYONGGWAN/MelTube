@@ -13,7 +13,9 @@
 		
 	</bean>
 	
-	
+	<bean id="melonChartController" class="com.meltube.melonChart.web.MelonChartController">
+		<property name="melonChartService" ref="melonChartService"></property>	
+	</bean>	
 
 
 </beans>

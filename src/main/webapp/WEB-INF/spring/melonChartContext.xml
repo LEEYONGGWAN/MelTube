@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="melonChartDao" class="com.meltube.melonChart.dao.MelonChartDaoImplForOracle">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
+	
+	
+	<bean id="melonChartService" class="com.meltube.melonChart.service.MelonChartServiceImpl">
+		<property name="melonChartDao" ref="melonChartDao"/>
+	</bean>
+</beans>

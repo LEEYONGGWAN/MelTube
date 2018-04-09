@@ -12,6 +12,7 @@
 		<config>src/main/webapp/WEB-INF/spring/communityContext.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/controllerContext.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/memberContext.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/melonChartContext.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

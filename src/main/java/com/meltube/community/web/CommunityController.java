@@ -1,5 +1,6 @@
 package com.meltube.community.web;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -8,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -93,7 +98,6 @@ public class CommunityController {
 		return new ModelAndView("redirect:/write");
 	}
 	/////////////////////////////////////////////////////////////////////////////
-	
 	
 	
 	

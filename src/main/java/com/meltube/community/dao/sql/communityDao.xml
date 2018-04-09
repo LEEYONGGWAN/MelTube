@@ -19,6 +19,10 @@
   		<result column="ALBUM" property="album" />
   		<result column="GENRE" property="genre" />
   		<result column="DISPLAY_FILE_NAME" property="displayFilename" />
+  		
+  		
+  		<result column="SING_IMG" property="sing_img" />
+  		
   		<!-- 결과를 다른 객체에 할당
   			자바타입은 경로 적어주는건데 이미 우리는 마이배티스에 적어줘서 저렇게 해줌 -->
   		<association property="memberVO" javaType="memberVO">
@@ -46,9 +50,11 @@
   			    , TO_CHAR(C.RELEASE_DATE , 'YYYY-MM-DD') RELEASE_DATE
   			    , C.REQUEST_IP 
   			    , C.DISPLAY_FILE_NAME
+                <!-- , SING_IMG -->
                 , M.ID M_ID
                 , M.NICKNAME
                 , M.REGIST_DATE
+                
   		FROM	COMMUNITY C
   			    , MEMBER M
   		WHERE   C.USER_ID = M.ID	   
@@ -66,6 +72,7 @@
   			    , TO_CHAR(C.RELEASE_DATE , 'YYYY-MM-DD') RELEASE_DATE
   			    , C.REQUEST_IP 
   			    , C.DISPLAY_FILE_NAME
+  			    <!-- , SING_IMG -->
                 , M.ID M_ID
                 , M.NICKNAME
                 , M.REGIST_DATE
@@ -93,6 +100,7 @@
 			, ALBUM
 			, GENRE
 			, DISPLAY_FILE_NAME
+			<!-- , SING_IMG -->
 		)
 		VALUES	(
 			COMMUNITY_ID_SEQ.NEXTVAL
@@ -105,6 +113,7 @@
 			, #{album}
 			, #{genre}
 			, #{displayFilename}
+			<!-- , #{sing_img} -->
 		)  		
   	</insert>
   	
@@ -133,6 +142,7 @@
   			    , C.REQUEST_IP 
   			    , C.DISPLAY_FILE_NAME
   			    , GENRE
+  			    , SING_IMG
                 , M.ID M_ID
                 , M.EMAIL
                 , M.NICKNAME
@@ -148,6 +158,16 @@
 		FROM	COMMUNITY
 		WHERE	ID = #{id}	
 	</delete>
+  	
+  	  	<!-- 글 작성갯수 가져오기 -->
+  	<select id="selectMyCommunitiesCount" resultType="_int" parameterType="_int" >
+  		SELECT	COUNT(ID)
+  		FROM	COMMUNITY
+  		WHERE	USER_ID=#{userId}	
+  	</select>
+  	
+  
+  	
   	
   	
   	

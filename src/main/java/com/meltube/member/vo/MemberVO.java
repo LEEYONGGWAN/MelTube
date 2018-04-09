@@ -8,7 +8,7 @@ public class MemberVO {
 	private String email;
 	private String registDate;
 
-
+	private String salt;
 
 	public int getId() {
 		return id;
@@ -48,6 +48,14 @@ public class MemberVO {
 
 	public void setRegistDate(String registDate) {
 		this.registDate = registDate;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
 	

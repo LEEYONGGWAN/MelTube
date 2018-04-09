@@ -53,6 +53,17 @@
 			$(location).attr("href", "<c:url value="/join"/>");
 		});
 
+		
+		
+		//test
+		$("#ctest").click(function() {
+			$(location).attr("href", "<c:url value="/getFromMelon"/>");
+		});
+		
+		
+		
+		
+		
 	});
 </script>
 
@@ -79,6 +90,15 @@
 			style="display: inline-block; vertical-align: top; width: 200px; height: 900px; margin-left: 20px; margin-top: 20px">
 
 			<div style="text-align: center">장르별 보기</div>
+			
+			
+			
+			<!-- test -->
+			<div>
+				<input type="button" id="ctest" value="넘어가즈아"/> 
+			</div>
+			
+			
 
 		</div>
 
@@ -94,9 +114,6 @@
 					<th>제목</th>
 					<th>가수</th>
 					<th>발매일</th>
-					<c:if test="${not empty sessionScope.__USER__ }">
-						<th><input type="button" id="goToWrite" value="노래 등록" /></th>
-					</c:if>
 				</tr>
 				<c:forEach items="${communityList}" var="community">
 					<tr>

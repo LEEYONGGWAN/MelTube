@@ -41,7 +41,11 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public boolean removeMember(int id, String deleteFlag) {
-		return false;
+		if(deleteFlag.equals("y") ) {
+			communityDao.deleteMyCommunities(id);
+		}		
+		return memberDao.deleteMember(id) > 0;
+	
 	}
 
 }

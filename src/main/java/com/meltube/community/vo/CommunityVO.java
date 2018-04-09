@@ -22,6 +22,15 @@ public class CommunityVO {
 	
 	private String requestIp;
 	private String displayFilename;
+	private String sing_img;
+	
+	private String mTitle;
+	private String mSinger;
+	
+	
+	
+	
+	
 	private MultipartFile file;
 	
 	
@@ -119,6 +128,14 @@ public class CommunityVO {
 		this.displayFilename = displayFilename;
 	}
 
+	public String getSing_img() {
+		return sing_img;
+	}
+
+	public void setSing_img(String sing_img) {
+		this.sing_img = sing_img;
+	}
+	
 	public MemberVO getMemberVO() {
 		return memberVO;
 	}
@@ -152,5 +169,23 @@ public class CommunityVO {
 		}
 		return null;
 	}
+
+	public String getmTitle() {
+		return mTitle;
+	}
+
+	public void setmTitle(String mTitle) {
+		this.mTitle = mTitle;
+	}
+
+	public String getmSinger() {
+		return mSinger;
+	}
+
+	public void setmSinger(String mSinger) {
+		this.mSinger = mSinger;
+	}
+	
+	
 	
 }

@@ -31,36 +31,46 @@
 
 
 <div style="margin-top: 10pt">
+
+
+	<c:if test = "${not empty sessionScope.__USER__ }">
 	<span class="box" style="font-size:15pt;  margin:55pt;">
-		<a href="<c:url value="/login"/>"> 
+		<a href="<c:url value="/write"/>"> 
 			노래등록
 		 </a>
 	</span>
+	</c:if>
 
+
+	<!-- TODO 장르 리스트 뜨게 하기 -->
 	<span class="box" style="font-size:15pt; margin:55pt">
 		<a href="<c:url value="/login"/>">
 			 장르별 보기 
 		</a>
 	</span>
 	
+	<!-- TODO 이벤트 페이지 -->
 	<span class="box" style="font-size:15pt; margin:55pt">
 		<a href="<c:url value="/login"/>"> 
 			이벤트 
 		</a>
 	</span>
 	
+	<c:if test = "${empty sessionScope.__USER__ }">
 	<span class="box" style="font-size:15pt; margin:55pt">
-		<a href="<c:url value="/login"/>" > 
+		<a href="<c:url value="/regist"/>" > 
 			회원가입 
 		</a>
 	</span>
-		
+	</c:if>
+	
+	<c:if test = "${not empty sessionScope.__USER__ }">	
 	<span class="box" style="font-size:15pt; margin:55pt">
-		<a href= "<c:url value="/login" />"   > 
+		<a href= "<c:url value="/delete/process1/" />"   > 
 			회원탈퇴 
 		</a>
 	</span>
-	
+	</c:if>
 	
 	<hr/>
 </div>

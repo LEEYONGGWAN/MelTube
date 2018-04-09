@@ -36,9 +36,9 @@
 </style>
 
 </head>
-<body>
+<body> 
 
-	
+	<jsp:include page="/WEB-INF/view/template/logo.jsp" />
 	<form:form id="writeForm" enctype="multipart/form-data">
 	<div id="wrapper" style="text-align:right">
 		<div>
@@ -80,6 +80,7 @@
 		<div>
 			<input type="file" id="file" name="file"/>
 		</div>
+   
    
 		<div>
 			<input type="button" id="writeBtn" value="등록" />

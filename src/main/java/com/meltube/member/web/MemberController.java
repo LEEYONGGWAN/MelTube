@@ -2,6 +2,7 @@ package com.meltube.member.web;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -121,6 +123,75 @@ public class MemberController {
 		response.put("response", isExists);
 		return response;
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	
+	@RequestMapping("/delete/process1")
+	public String viewVerifyPage() {
+		return "member/delete/process1";
+	}
+	
+	@RequestMapping("/delete/process2")
+	public ModelAndView viewDeleteMyCommunitiesPage(@RequestParam(required=false, defaultValue = "") String password
+													, HttpSession session) {
+		
+		if( password.length() == 0 ) {
+			return new ModelAndView("error/404");
+		}
+		
+		System.out.println("여기들어옴");
+		
+		MemberVO member = (MemberVO) session.getAttribute(Member.USER);
+		member.setPassword(password);
+
+		MemberVO verifyMember = memberService.readMember(member);
+		if(verifyMember == null) {
+			return new ModelAndView("redirect:/delete/process1");
+		}
+		//TODO 내가 작성한 게시글의 개수 가져오기
+		int myCommunitiesCount = communityService.readMyCommunitiesCount(verifyMember.getId());
+		
+		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("member/delete/process2");
+		view.addObject("myCommunitiesCount", myCommunitiesCount);
+		
+		
+		//난수값을 만든다음 token 이라는 이름으로 집어넣어라(process3 으로 넘어갈때 중간들에 들어오는애들 못들어오)		
+		String uuid = UUID.randomUUID().toString();
+		session.setAttribute("__TOKEN__", uuid);
+		
+		view.addObject("token", uuid);
+		
+		return view;
+	}
+	
+	@RequestMapping("/account/delete/{deleteFlag}")
+	public String removeId(HttpSession session,
+							@RequestParam(required=false, defaultValue="") String token,
+							@PathVariable String deleteFlag)  {
+
+		String sessionToken = (String) session.getAttribute("__TOKEN__");
+		System.out.println(sessionToken);
+		if( sessionToken == null || !sessionToken.equals(token)) {
+			return "error/404";
+		}
+		
+		
+		MemberVO member = (MemberVO) session.getAttribute(Member.USER);
+
+		if (member == null) {
+			return "redirect:/login";
+		}
+
+		int id = member.getId();
+
+		if (memberService.removeMember(id, deleteFlag)) {
+			session.invalidate();
+		}
+		return "member/delete/delete";
+	}
+	
 	
 	
 	

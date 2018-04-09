@@ -153,6 +153,7 @@
 			
 			
 			
+			
 
 			else {
 
@@ -179,6 +180,15 @@
 						$("#password").addClass("invalid");
 						return false;
 					}
+					
+					if ($("#password-confirm").val() == "") {
+						alert("password을 똑같이 한번더 입력하세요");
+						$("#password-confirm").focus();
+						$("#password-confirm").addClass("invalid");
+						return false;
+					}
+					
+					
 
 					
 					$("#registForm").attr({
@@ -204,6 +214,7 @@
 	<jsp:include page="/WEB-INF/view/template/logo.jsp"/>
 	<div id="wrapper" style="text-align:center;">
 		<form:form modelAttribute="registForm">
+
 			<div>
 				<input type="email" id="email" name="email" placeholder="Email" />
 			</div>
@@ -219,6 +230,9 @@
 			<div>
 				<input type="password" id="password-confirm" placeholder="Password" />
 			</div>
+
+			
+
 
 			<div style="text-align: center;">
 				<input type="button" id="registBtn" value="회원가입"/>

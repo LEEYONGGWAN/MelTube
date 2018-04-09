@@ -12,30 +12,23 @@ public class CommunityServiceImpl implements CommunityService {
 	public void setCommunityDao(CommunityDao communityDao) {
 		this.communityDao = communityDao;
 	}
-	
-	
-	
+
 	@Override
 	public List<CommunityVO> getAll() {
 		return communityDao.selectAll();
 	}
-	
-	
-	//오른쪽 좋아요순으로 데려오기
+
+	// 오른쪽 좋아요순으로 데려오기
 	@Override
 	public List<CommunityVO> getLikeList() {
 		return communityDao.sortAll();
 	}
-	
-	
-	
 
 	@Override
 	public CommunityVO getOne(int id) {
 		return communityDao.selectSing(id);
 	}
 
-	
 	@Override
 	public boolean createCommunity(CommunityVO communityVO) {
 		return communityDao.insertCommunity(communityVO) > 0;
@@ -43,25 +36,26 @@ public class CommunityServiceImpl implements CommunityService {
 
 	@Override
 	public boolean increaseR(int id) {
-		if(communityDao.incrementRCount(id) > 0) {
+		if (communityDao.incrementRCount(id) > 0) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean increaseV(int id) {
-		
-		if(communityDao.incrementViewCount(id) > 0) {
+
+		if (communityDao.incrementViewCount(id) > 0) {
 			return true;
 		}
 		return false;
-		
+
+	}
+
+	@Override
+	public int readMyCommunitiesCount(int userId) {
+		return communityDao.selectMyCommunitiesCount(userId);
 	}
 
 
-
-	
-	
-	
 }

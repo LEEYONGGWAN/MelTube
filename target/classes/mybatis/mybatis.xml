@@ -11,6 +11,7 @@
   	
   		<typeAlias type="com.meltube.community.vo.CommunityVO" alias="CommunityVO"/>
   		<typeAlias type="com.meltube.member.vo.MemberVO" alias="MemberVO"/>
+  		<typeAlias type="com.meltube.melonChart.vo.MelonChartVO" alias="MelonChartVO"/>
   		
   		
   	</typeAliases>
@@ -20,6 +21,7 @@
   	<mappers>
   		<mapper resource="/com/meltube/community/dao/sql/communityDao.xml"/>
   		<mapper resource="/com/meltube/member/dao/sql/memberDao.xml"/>
+  		<mapper resource="/com/meltube/melonChart/dao/sql/melonChartDao.xml"/>
   	</mappers>
   
   </configuration>

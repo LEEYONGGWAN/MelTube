@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace에는 인터페이스의 이름을 적어준다. -->
+  <mapper namespace="MelonChartDao">
+  	
+	<insert id="insertMember" parameterType="MemberVO">
+		INSERT	INTO MELONCHART(
+			TITLE
+			, SINGER
+		)
+		
+		VALUES (
+			#{mTitle}
+			, #{mSinger}
+		)		
+		
+	</insert>
+	
+	
+	
+  
+  </mapper>
