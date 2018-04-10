@@ -89,7 +89,28 @@
 		<div
 			style="display: inline-block; vertical-align: top; width: 200px; height: 900px; margin-left: 20px; margin-top: 20px">
 
-			<div style="text-align: center">장르별 보기</div>
+			<div style="text-align: center">실시간 멜론 차트 순위</div>
+			
+			<table>
+				<tr>
+					<th>순위</th>
+					<th>제목</th>
+					<th>가수</th>
+				</tr>
+				<c:forEach items="${mChart}" var="mChart">
+					<tr>
+
+						<td style="text-align:center">${mChart.rank}</td>
+
+						<td style="text-align:center">${mChart.mTitle}</td>
+
+						<td style="text-align:center">${mChart.mSinger}</td>
+					</tr>
+
+				</c:forEach>
+
+			</table>
+			 
 			
 			
 			

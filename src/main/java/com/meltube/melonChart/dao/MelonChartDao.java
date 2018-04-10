@@ -13,7 +13,12 @@ public interface MelonChartDao {
 	
 	
 	//멜론에서 가져온거 db로 넣기
-	public int insertCommunityMelon(MelonChartVO melonChartVO);
+	public int insertCommunityMelon( MelonChartVO melonChartVO );
+	
+	//새로 갱신하기위해서 db로 넣기 전에 지운다.
+	public int deleteCommunityMelon();
+	
+	
 	
 	
 }

@@ -1,6 +1,5 @@
 package com.meltube.community.web;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -9,10 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,16 +18,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.meltube.community.service.CommunityService;
 import com.meltube.community.vo.CommunityVO;
+import com.meltube.melonChart.service.MelonChartService;
+import com.meltube.melonChart.vo.MelonChartVO;
 import com.meltube.util.DownloadUtil;
 
 @Controller
 public class CommunityController {
 	private CommunityService communityService;
-
+	private MelonChartService melonChartService;
+	
 	public void setCommunityService(CommunityService communityService) {
 		this.communityService = communityService;
 	}
-//adsf
+	
+	public void setMelonChartService(MelonChartService melonChartService) {
+		this.melonChartService = melonChartService;
+	}
+	
+	
 	/////////////////////// 메인화면 보기 ///////////////////////////////////
 	@RequestMapping("/")
 	public ModelAndView viewListPage() {
@@ -44,10 +47,15 @@ public class CommunityController {
 
 		List<CommunityVO> singList = communityService.getAll();
 		List<CommunityVO> sortList = communityService.getLikeList();
+		List<MelonChartVO> mChart = melonChartService.getMchart();
+
+		
+		
 		
 		
 		view.addObject("communityList", singList);
 		view.addObject("sortList", sortList);
+		view.addObject("mChart", mChart);
 		
 		
 		

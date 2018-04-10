@@ -5,18 +5,36 @@
   <!-- namespace에는 인터페이스의 이름을 적어준다. -->
   <mapper namespace="MelonChartDao">
   	
-	<insert id="insertMember" parameterType="MemberVO">
+	<insert id="insertCommunityMelon" parameterType="MelonChartVO">
 		INSERT	INTO MELONCHART(
+			
 			TITLE
 			, SINGER
+			, ID
+			, RANK
 		)
 		
 		VALUES (
 			#{mTitle}
 			, #{mSinger}
+			, MELONCHART_ID_SEQ.NEXTVAL
+			, #{rank}
 		)		
 		
 	</insert>
+	
+	<select id="selectMchart" resultType="MelonChartVO">
+		SELECT  RANK
+				, TITLE mTitle
+				, SINGER mSinger
+  		FROM	MELONCHART M
+  		ORDER   BY RANK ASC   
+	</select>
+	
+	<delete id="deleteCommunityMelon">
+		DELETE
+		FROM	MELONCHART
+	</delete>
 	
 	
 	

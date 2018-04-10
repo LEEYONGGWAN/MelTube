@@ -10,7 +10,7 @@ public class MelonChartDaoImplForOracle extends SqlSessionDaoSupport implements 
 
 	@Override
 	public List<MelonChartVO> selectMchart() {
-		return null;
+		return getSqlSession().selectList("MelonChartDao.selectMchart");
 	}
 
 	@Override
@@ -18,4 +18,11 @@ public class MelonChartDaoImplForOracle extends SqlSessionDaoSupport implements 
 		return getSqlSession().insert("MelonChartDao.insertCommunityMelon", melonChartVO);
 	}
 
+	@Override
+	public int deleteCommunityMelon() {
+		return getSqlSession().delete("MelonChartDao.deleteCommunityMelon");
+	}
+
+	
+	
 }
