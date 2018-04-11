@@ -44,7 +44,7 @@
 
 	<!-- TODO 장르 리스트 뜨게 하기 -->
 	<span class="box" style="font-size:15pt; margin:55pt">
-		<a href="<c:url value="/login"/>">
+		<a href="<c:url value="/distGenre"/>">
 			 장르별 보기 
 		</a>
 	</span>

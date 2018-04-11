@@ -19,9 +19,7 @@
   		<result column="ALBUM" property="album" />
   		<result column="GENRE" property="genre" />
   		<result column="DISPLAY_FILE_NAME" property="displayFilename" />
-  		
-  		
-  		<result column="SING_IMG" property="sing_img" />
+  		<result column="SING_IMG" property="singImg" />
   		
   		<!-- 결과를 다른 객체에 할당
   			자바타입은 경로 적어주는건데 이미 우리는 마이배티스에 적어줘서 저렇게 해줌 -->
@@ -100,7 +98,7 @@
 			, ALBUM
 			, GENRE
 			, DISPLAY_FILE_NAME
-			<!-- , SING_IMG -->
+			, SING_IMG
 		)
 		VALUES	(
 			COMMUNITY_ID_SEQ.NEXTVAL
@@ -113,7 +111,7 @@
 			, #{album}
 			, #{genre}
 			, #{displayFilename}
-			<!-- , #{sing_img} -->
+			, #{singImg}
 		)  		
   	</insert>
   	
@@ -167,6 +165,9 @@
   	</select>
   	
   
+  	<select id=""></select>
+  	
+  	
   	
   	
   	

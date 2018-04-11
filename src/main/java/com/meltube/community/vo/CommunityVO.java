@@ -22,20 +22,28 @@ public class CommunityVO {
 	
 	private String requestIp;
 	private String displayFilename;
-	private String sing_img;
+	//노래 사진
+	private String singImg;
 	
 	private String mTitle;
 	private String mSinger;
 	
-	
-	
-	
-	
+	//동영상
 	private MultipartFile file;
+	
+	//이미지
+	private MultipartFile sImg;
+	
+	
 	
 	
 	private MemberVO memberVO;
 
+	
+	
+	
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -128,12 +136,12 @@ public class CommunityVO {
 		this.displayFilename = displayFilename;
 	}
 
-	public String getSing_img() {
-		return sing_img;
+	public String getSingImg() {
+		return singImg;
 	}
 
-	public void setSing_img(String sing_img) {
-		this.sing_img = sing_img;
+	public void setSingImg(String sing_img) {
+		this.singImg = sing_img;
 	}
 	
 	public MemberVO getMemberVO() {
@@ -152,12 +160,23 @@ public class CommunityVO {
 		this.file = file;
 	}
 
+	public MultipartFile getsImg() {
+		return sImg;
+	}
+
+	public void setsImg(MultipartFile sImg) {
+		this.sImg = sImg;
+	}
+
 	public String save() {
-		if (file != null && !file.isEmpty()) {
+		if (   file != null && !file.isEmpty()       ) {
 
 			displayFilename = file.getOriginalFilename();
 
 			File newFile = new File("D:\\uploadFiles/" + file.getOriginalFilename());
+			
+			
+			
 			try {
 				file.transferTo(newFile);
 				return newFile.getAbsolutePath();
@@ -166,9 +185,38 @@ public class CommunityVO {
 			} catch (IOException e) {
 				throw new RuntimeException(e.getMessage(), e);
 			}
+			
+			
+			
 		}
 		return null;
 	}
+	
+	public String imgSave() {
+		if (   sImg != null && !sImg.isEmpty()       ) {
+
+			singImg = sImg.getOriginalFilename();
+
+			File newSImg = new File("D:\\uploadImg/" + sImg.getOriginalFilename());
+			
+			try {
+				sImg.transferTo(newSImg);
+				return newSImg.getAbsolutePath();
+			} catch (IllegalStateException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			} catch (IOException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+			
+			
+			
+		}
+		return null;
+	}
+	
+	
+	
+	
 
 	public String getmTitle() {
 		return mTitle;

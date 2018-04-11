@@ -1,0 +1,29 @@
+input {
+    padding: 10px;
+    font-size: 13pt;
+    width: 300px;
+    margin: 7px;
+    margin-left: 0px;
+    border-radius: 5px;
+    border: 1px solid #eeeeee;
+}
+
+textarea{
+	padding: 10px;
+	width: 400px;
+	height: 800px; 
+	margin: 7px;
+    margin-left: 0px;
+    border-radius: 5px;
+    border: 1px solid #eeeeee;
+}
+
+select{
+	padding: 10px;
+    font-size: 13pt;
+    width: 300px;
+    margin: 7px;
+    margin-left: 0px;
+    border-radius: 5px;
+    border: 1px solid #eeeeee;	
+}

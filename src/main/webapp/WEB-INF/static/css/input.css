@@ -17,3 +17,14 @@ input.valid{
 	background-color: #a2eca7;
 	color: #74a879;
 }
+
+
+input.writeBox{
+	width:400px;
+	height:100px;
+}
+
+input.lyricsBox{
+	width:400px;
+	height:800px;
+}

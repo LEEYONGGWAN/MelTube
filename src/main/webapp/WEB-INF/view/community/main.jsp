@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>meltube</title>
+<title>Meltube::뮤비가 보고싶을땐 멜튜브</title>
 
 <script type="text/javascript"
 	src="<c:url value="/static/js/jquery-3.3.1.min.js" />"></script>
@@ -16,17 +16,17 @@
 
 		$("#loginBtn").click(function() {
 
-			if( $("#email").val() == ""  ){
+			if ($("#email").val() == "") {
 				alert("아이디를 입력해주세요!");
 				$(location).attr("href", "<c:url value="/"/>");
-				
+
 			}
-			 	
-			else if( $("#password").val() == "" ){
+
+			else if ($("#password").val() == "") {
 				alert("비밀번호를 입력해주세요!");
 				$(location).attr("href", "<c:url value="/"/>");
-			}	
-			
+			}
+
 			var loginForm = $("#loginForm");
 			loginForm.attr({
 				"method" : "post",
@@ -53,17 +53,11 @@
 			$(location).attr("href", "<c:url value="/join"/>");
 		});
 
-		
-		
 		//test
 		$("#ctest").click(function() {
 			$(location).attr("href", "<c:url value="/getFromMelon"/>");
 		});
-		
-		
-		
-		
-		
+
 	});
 </script>
 
@@ -73,88 +67,44 @@
 
 	<div style="width: 1200px;">
 		<!-- img -->
-		<jsp:include page="/WEB-INF/view/template/logo.jsp"/>
-		<jsp:include page="/WEB-INF/view/template/menu.jsp"/>
-		
+		<jsp:include page="/WEB-INF/view/template/logo.jsp" />
+		<jsp:include page="/WEB-INF/view/template/menu.jsp" />
+
 	</div>
 
 
-
-	<!-- 큰틀 -->
-	<div
-		style="display: inline-block; width: 1800px; height: 1000px;">
-
-		<!-- 왼쪽 리스트 칸-->
-
-		<div
-			style="display: inline-block; vertical-align: top; width: 200px; height: 900px; margin-left: 20px; margin-top: 20px">
-
-			<div style="text-align: center">실시간 멜론 차트 순위</div>
-			
-			<table>
-				<tr>
-					<th>순위</th>
-					<th>제목</th>
-					<th>가수</th>
-				</tr>
-				<c:forEach items="${mChart}" var="mChart">
-					<tr>
-
-						<td style="text-align:center">${mChart.rank}</td>
-
-						<td style="text-align:center">${mChart.mTitle}</td>
-
-						<td style="text-align:center">${mChart.mSinger}</td>
-					</tr>
-
-				</c:forEach>
-
-			</table>
-			 
-			
-			
-			
 			<!-- test -->
 			<div>
 				<input type="button" id="ctest" value="넘어가즈아"/> 
 			</div>
-			
-			
-
-		</div>
+	<div style="margin-left:60px; margin-top:30px; margin-bottm :0px " >신규 뮤비</div>
+	<!-- 큰틀 -->
+	<div style="display: inline-block; width: 1800px; height: 1000px;">
 
 		<!-- 가운데 최신곡 -->
 		<div
-			style="display: inline-block; vertical-align: top; width: 500px; margin-left: 20px; margin-top: 20px">
+			style="display: inline-block; vertical-align: top; width: 700px; margin-left: 20px;">
 
-			<div style="text-align: center">새로나온 뮤비</div>
+					<ul>
+						<c:forEach items="${communityList}" var="community" end="5">
+							<li style="display: inline-block;">
+							
+							<span style="display: inline-block;"> <a
+									href="<c:url value="/view/${community.id}"/>"> <img
+										style="width: 200px; height: 200px;" alt="사진 img"
+										src="<c:url value="/getS/${community.id}"  />" />
+								</a>
+		
+							</span></li>
+		
+						</c:forEach>
+					</ul>
 
-			<table>
-				<tr>
-					<th>장르</th>
-					<th>제목</th>
-					<th>가수</th>
-					<th>발매일</th>
-				</tr>
-				<c:forEach items="${communityList}" var="community">
-					<tr>
-
-						<td style="text-align:center">${community.genre}</td>
-
-						<td style="text-align:center"><a href="<c:url value="/view/${community.id}"/>">${community.title}</a></td>
-
-						<td style="text-align:center">${community.singer}</td>
-						<td style="text-align:center">${community.releaseDate}</td>
-					</tr>
-
-				</c:forEach>
-
-			</table>
 		</div>
-  
+
 		<!-- 오른쪽 아이디&좋아요 많은곡  -->
 		<div
-			style="display: inline-block; vertical-align: top; width: 400px; margin-left: 20px; margin-top: 20px">
+			style="display: inline-block; vertical-align: top; width: 400px; margin-left: 20px; ">
 
 
 
@@ -165,81 +115,90 @@
 				<div>
 					<div style="display: inline-block; width: 400px">
 
-						<c:if test="${empty sessionScope.__USER__ }">
+						<c:if test=" ${empty sessionScope.__USER__ }">
 
 							<div>
-								ID : <input type="text" id="email" name="email"
-									placeholder="ID(email)" />
+								<span style="width:40px;"> ID : </span>
+								<span>
+									<input type="text" id="email" name="email" placeholder="ID(email)" style="margin-left:9px" />
+								</span>
 							</div>
 
 							<div>
-								PW : <input type="password" id="password" name="password"
-									placeholder="Password" />
+								
+								<span style="width:40px;">PW : </span> 
+								<span>
+									<input type="password" id="password" name="password" placeholder="Password" />
+								</span>	
 							</div>
 
 
 							<div
 								style="display: inline-block; width: 90x; vertical-align: top;">
-								<input type="button" id="loginBtn" value="로그인" />
+								<input type="button" id="loginBtn" value="로그인" style="width: 70px;" />
 							</div>
 
 							<div style="display: inline-block;">
-								<input type="button" id="join" value="회원가입" />
+								<input type="button" id="join" value="회원가입" style="width: 70px;"/>
 							</div>
 
 
 						</c:if>
 
 						<c:if test="${not empty sessionScope.__USER__ }">
-
-							<div>
-								${sessionScope.__USER__.nickname}님(${sessionScope.__USER__.email})
-							</div>
-
-							<div>환영합니다.</div>
-
-							<div>
-								<a href="<c:url value="/logout" />"> <input type="button" id="logout" value="로그아웃" />  </a>
+							
+							<div style="display:inline-block">
+								<div>
+									${sessionScope.__USER__.nickname}님(${sessionScope.__USER__.email})
+								</div>
+	
+								<div style="margin-top:5px">환영합니다.</div>
+							</div>	
+							<div style="display:inline-block; vertical-align:top">
+								<a href="<c:url value="/logout" />"> 
+									<input type="button" id="logout" value="로그아웃" style="width:100px; height:50px"/>
+								</a>
 							</div>
 
 
 						</c:if>
-
   
-
+  
+    
 					</div>
 				</div>
 			</form:form>
-  
+
 			<!-- 좋아요 많은곡 -->
 			<div
 				style="vertical-align: top; width: 480px; border-top: 1px solid #000; margin-top: 10px">
 
-				<div style="text-align:center">좋아요 랭킹</div>
+				<div style="text-align: center; font: bold">멜튜브 차트</div>
 
 
 				<table>
-				<tr>
-					<th>좋아요</th>
-					<th>장르</th>
-					<th>제목</th>
-					<th>가수</th>
-					
-				</tr>
-				<c:forEach items="${sortList}" var="sort">
-						
 					<tr>
-						<td style="text-align:center">${sort.likeIt} </td>
-						<td style="text-align:center">${sort.genre}</td>
+						<th>좋아요</th>
+						<th>장르</th>
+						<th>제목</th>
+						<th>가수</th>
 
-						<td style="text-align:center"><a href="<c:url value="/view/${sort.id}"/>">${sort.title}</a></td>
-
-						<td style="text-align:center">${sort.singer}</td>
 					</tr>
+					<c:forEach items="${sortList}" var="sort">
 
-				</c:forEach>
+						<tr>
+							<td style="text-align: center">${sort.likeIt}</td>
+							<td style="text-align: center">${sort.genre}</td>
 
-			</table>
+							<td style="text-align: center"><a
+								href="<c:url value="/view/${sort.id}"/>">${sort.title}</a></td>
+
+							<td style="text-align: center">${sort.singer}</td>
+						</tr>
+
+					</c:forEach>
+
+				</table>
 
 
 

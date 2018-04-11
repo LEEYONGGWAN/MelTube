@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DownloadUtil {
+	
 	private String uploadPathWithFileName;
 
 	public DownloadUtil(String uploadPathWithFileName) {
@@ -31,12 +32,12 @@ public class DownloadUtil {
 			throws UnsupportedEncodingException {
 
 		File downloadFile = new File(uploadPathWithFileName);
+		
 		String mimeType = new MimetypesFileTypeMap().getContentType(downloadFile);
 		
 		
 		//response.setContentType("application/download; charset=utf-8");
 		response.setContentType(mimeType + "; charset=utf-8");
-		
 		response.setContentLength((int) downloadFile.length());
 
 		// 사용자의 브라우져 정보를 가져온다.

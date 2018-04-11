@@ -38,12 +38,23 @@
  
 
 <div id="nav">
-	<ul>
-		<li>
-			<div id="melIcon" style="margin-left: 20px; border-bottom: 3px solid #333; width:1200px">
+	
+	
+			<div id="melIcon" style="margin-left: 20px; display:inline-block">
 				<img src="<c:url value="/static/img/mel.png"/>"  style= "width: 100px; "/>
 			</div>
-		</li>
-	
-	</ul>
+
+
+
+		<!-- TODO 자바스크립트 해주고 컨트롤러 및 여러군대에 검색기능 만들어주기 -->
+	<span >
+		<input type="text" id="searchBox" name="searchBox" placeholder="찾고 싶은 뮤직비디오를 검색하세요!" 
+		style="vertical-align:top; width:300px; margin-left:20px; margin-top:20px" />
+	</span>
+  
+	<span>
+		<input type="button" id="searchBtn" value="Q" style=" vertical-align:top; margin-top:20px" />
+	</span>
+	  
+    
 </div>

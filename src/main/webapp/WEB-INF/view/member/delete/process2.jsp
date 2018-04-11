@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Meltube::뮤비가 보고싶을땐 멜튜브</title>
 
 <link type="text/css" rel="stylesheet"
 	href=" <c:url value=" /static/css/common.css "/> " />

@@ -74,21 +74,22 @@ public class MemberController {
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public ModelAndView doRegistAction(@ModelAttribute("registForm") @Valid MemberVO memberVO, Errors errors) {
-			System.out.println("일단 포스트 조인 들어옴");
 		
 		if (errors.hasErrors()) {
-			System.out.println("해즈 에러");
 			return new ModelAndView("member/tt");
 		}
 		
 		if (memberService.createMember(memberVO)) {
-			System.out.println("크리에이트 멤바");
 			return new ModelAndView("redirect:/");
 		}
-		System.out.println("마지막 모델엔뷰");
 		return new ModelAndView("member/join");
 	}
 
+	
+	
+	
+	
+	
 	@RequestMapping("/logout")
 	public String doLogoutAction(HttpSession session) {
 

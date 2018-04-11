@@ -94,6 +94,7 @@ public class CommunityController {
 		communityVO.setRequestIp(requestIp);
 		
 		communityVO.save();
+		communityVO.imgSave();
 		
 		boolean isSuccess = communityService.createCommunity(communityVO);
 		
@@ -121,7 +122,7 @@ public class CommunityController {
 		}
 		return "redirect:/";
 	}
-	
+	//////////////////////////////////////////
 	
 	
 	
@@ -154,27 +155,65 @@ public class CommunityController {
 	//////////////////////////////////////////////////////////////////////////
 
 	@RequestMapping("/get/{id}")
-	public void download(@PathVariable int id, 
-			HttpServletRequest request, 
-			HttpServletResponse response) {
+	public void download(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 		
 		CommunityVO community = communityService.getOne(id);
 		String filename = community.getDisplayFilename();
-		System.out.println(filename);
-		System.out.println(community.getAlbum());
-		System.out.println(community.getDisplayFilename());
-		System.out.println(community.getGenre());
-		System.out.println(community.getTitle());
+		//String img = community.getSingImg();
+		
 		DownloadUtil download = new DownloadUtil("D:/uploadFiles/" + filename);
 		
 		try {
-			System.out.println("try");
 			download.download(request, response, filename);
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 
 	}
+	
+	@RequestMapping("/getS/{id}")
+	public void Imgdownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+		
+		CommunityVO community = communityService.getOne(id);
+		String img = community.getSingImg();
+		
+		DownloadUtil download = new DownloadUtil("D:/uploadImg/" + img);
+		
+		try {
+			download.download(request, response, img);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+
+	}
+	//////////////////////////////////////////
+	@RequestMapping("/distGenre")
+	public ModelAndView viewGenrePage() {
+
+		ModelAndView view = new ModelAndView();
+		
+		// /WEB-INF/view/community/main.jsp
+		view.setViewName("community/divideGenre");
+
+/*		List<CommunityVO> singList = communityService.getAll();
+		List<CommunityVO> sortList = communityService.getLikeList();
+		List<MelonChartVO> mChart = melonChartService.getMchart();
+
+		
+		
+		
+		
+		view.addObject("communityList", singList);
+		view.addObject("sortList", sortList);
+		view.addObject("mChart", mChart);
+		*/
+		
+		
+		return view;
+	}
+	
+	////////////////////////////////////////////
+	
 	
 	
 }

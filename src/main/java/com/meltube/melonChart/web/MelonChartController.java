@@ -51,15 +51,23 @@ public class MelonChartController {
 		MelonChartVO melonChartVO;
 		
 		for (Element node : ele) {
+			
+			System.out.println("수정전 node" + node);
+				
 			if (node.hasAttr("data-song-no")) {
+				System.out.println("수정후 node" + node);
 				melonChartVO = new MelonChartVO();
 
 				Elements td = node.select("td");
 				
 				melonChartVO.setmSinger(td.get(5).select("div.ellipsis.rank02 > a").text());
+				
 				melonChartVO.setmTitle(td.get(5).select("div.ellipsis.rank01").text());
 				
-				if( Integer.parseInt(td.get(1).select("span.rank").text()) < 10) {
+				
+				
+				//랭크 가 넘어올때  앞에 0이 안붙는 바람에 정렬할때 제대로 되지 않음 그래서 1 은 01로 2는 02로 바꿔주는 작업함
+ 				if( Integer.parseInt(td.get(1).select("span.rank").text()) < 10) {
 					String tt = "0"+ td.get(1).select("span.rank").text();
 					melonChartVO.setRank(tt);
 				}
