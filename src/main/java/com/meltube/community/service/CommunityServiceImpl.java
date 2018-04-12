@@ -24,6 +24,14 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityDao.sortAll();
 	}
 
+	//장르별 가져오기	
+	@Override
+	public List<CommunityVO> getGenre(String genre) {
+		return communityDao.selectGenre(genre);
+	}
+
+	
+	
 	@Override
 	public CommunityVO getOne(int id) {
 		return communityDao.selectSing(id);
@@ -56,6 +64,7 @@ public class CommunityServiceImpl implements CommunityService {
 	public int readMyCommunitiesCount(int userId) {
 		return communityDao.selectMyCommunitiesCount(userId);
 	}
+
 
 
 }

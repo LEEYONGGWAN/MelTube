@@ -73,38 +73,39 @@
 	</div>
 
 
-			<!-- test -->
-			<div>
-				<input type="button" id="ctest" value="넘어가즈아"/> 
-			</div>
-	<div style="margin-left:60px; margin-top:30px; margin-bottm :0px " >신규 뮤비</div>
+	<!-- test -->
+	<div>
+		<input type="button" id="ctest" value="넘어가즈아" />
+	</div>
+	<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px">신규
+		뮤비</div>
 	<!-- 큰틀 -->
 	<div style="display: inline-block; width: 1800px; height: 1000px;">
 
-		<!-- 가운데 최신곡 -->
-		<div
-			style="display: inline-block; vertical-align: top; width: 700px; margin-left: 20px;">
+		<!-- 왼쪽 최신곡 -->
+		<div style="display: inline-block; vertical-align: top; width: 700px; margin-left: 20px;">
 
-					<ul>
-						<c:forEach items="${communityList}" var="community" end="5">
-							<li style="display: inline-block;">
-							
-							<span style="display: inline-block;"> <a
-									href="<c:url value="/view/${community.id}"/>"> <img
-										style="width: 200px; height: 200px;" alt="사진 img"
-										src="<c:url value="/getS/${community.id}"  />" />
-								</a>
-		
-							</span></li>
-		
-						</c:forEach>
-					</ul>
+			<ul>
+				<c:forEach items="${communityList}" var="community" end="5">
+					<li style="display: inline-block;">
+						<span style="display: inline-block;"> 
+							<a href="<c:url value="/view/${community.id}"/>"> 
+								
+								<img style="width: 200px; height: 200px;" alt="사진 img"
+									src="<c:url value="/getS/${community.id}"  />" />
+							</a>
+
+						</span>
+					</li>
+
+				</c:forEach>
+			</ul>
 
 		</div>
 
 		<!-- 오른쪽 아이디&좋아요 많은곡  -->
 		<div
-			style="display: inline-block; vertical-align: top; width: 400px; margin-left: 20px; ">
+			style="display: inline-block; vertical-align: top; width: 400px; margin-left: 20px;">
 
 
 
@@ -113,58 +114,62 @@
 			<form:form modelAttribute="loginForm">
 				<!-- 로그인 박스-->
 				<div>
-					<div style="display: inline-block; width: 400px">
+					<div style="display: inline-block; width: 300px">
 
-						<c:if test=" ${empty sessionScope.__USER__ }">
+						<c:if test="${empty sessionScope.__USER__ }">
 
 							<div>
-								<span style="width:40px;"> ID : </span>
-								<span>
-									<input type="text" id="email" name="email" placeholder="ID(email)" style="margin-left:9px" />
+								<span style="width: 40px;"> ID : </span> 
+								<span> 
+								<input
+									type="text" id="email" name="email" placeholder="ID(email)"
+									style="margin-left: 9px" />
 								</span>
 							</div>
 
 							<div>
-								
-								<span style="width:40px;">PW : </span> 
-								<span>
-									<input type="password" id="password" name="password" placeholder="Password" />
-								</span>	
+								<span style="width: 40px;">PW : </span> 
+								<span> 
+								<input
+									type="password" id="password" name="password"
+									placeholder="Password" />
+								</span>
 							</div>
 
 
 							<div
 								style="display: inline-block; width: 90x; vertical-align: top;">
-								<input type="button" id="loginBtn" value="로그인" style="width: 70px;" />
+								<input type="button" id="loginBtn" value="로그인"
+									style="width: 70px;" />
 							</div>
 
 							<div style="display: inline-block;">
-								<input type="button" id="join" value="회원가입" style="width: 70px;"/>
+								<input type="button" id="join" value="회원가입" style="width: 70px;" />
 							</div>
 
 
 						</c:if>
 
 						<c:if test="${not empty sessionScope.__USER__ }">
-							
-							<div style="display:inline-block">
+
+							<div style="display: inline-block">
 								<div>
 									${sessionScope.__USER__.nickname}님(${sessionScope.__USER__.email})
 								</div>
-	
-								<div style="margin-top:5px">환영합니다.</div>
-							</div>	
-							<div style="display:inline-block; vertical-align:top">
-								<a href="<c:url value="/logout" />"> 
-									<input type="button" id="logout" value="로그아웃" style="width:100px; height:50px"/>
+
+								<div style="margin-top: 5px">환영합니다.</div>
+							</div>
+							<div style="display: inline-block; vertical-align: top">
+								<a href="<c:url value="/logout" />"> <input type="button"
+									id="logout" value="로그아웃" style="width: 100px; height: 50px" />
 								</a>
 							</div>
 
 
 						</c:if>
-  
-  
-    
+
+
+
 					</div>
 				</div>
 			</form:form>
@@ -199,27 +204,6 @@
 					</c:forEach>
 
 				</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 			</div>

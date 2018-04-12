@@ -67,11 +67,11 @@
 				장 르 :
 					
 					<select id="genre" name="genre">
-						<option>발라드</option>
-						<option>랩/힙합</option>
-						<option>R&B/Soul</option>
-						<option>록/메탈</option>
-						<option>댄스</option>
+						<option>ballad</option>
+						<option>rap&hiphop</option>
+						<option>RnB/Soul</option>
+						<option>rock/metal</option>
+						<option>dance</option>
 					</select>
 					
 					

@@ -13,6 +13,10 @@ public interface CommunityService {
 	
 	public CommunityVO getOne(int id);
 	
+	//장르별 가져오기
+	public List<CommunityVO> getGenre(String genre);
+	
+	
 	public boolean createCommunity(CommunityVO communityVO);
 	
 	public boolean increaseR(int id);

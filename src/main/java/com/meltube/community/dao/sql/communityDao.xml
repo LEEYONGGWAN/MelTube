@@ -165,7 +165,15 @@
   	</select>
   	
   
-  	<select id=""></select>
+  	<select id="selectGenre"  resultType="CommunityVO"  parameterType="string">
+  		SELECT	C.TITLE
+  				, GENRE
+  				, C.SINGER
+  		FROM	COMMUINITY
+  		WHERE	GENRE=#{genre}
+ 		 	
+  		
+  	</select>
   	
   	
   	

@@ -192,24 +192,15 @@ public class CommunityController {
 
 		ModelAndView view = new ModelAndView();
 		
-		// /WEB-INF/view/community/main.jsp
 		view.setViewName("community/divideGenre");
-
-/*		List<CommunityVO> singList = communityService.getAll();
-		List<CommunityVO> sortList = communityService.getLikeList();
-		List<MelonChartVO> mChart = melonChartService.getMchart();
-
 		
+		if(   ) {
+			List<CommunityVO> genreList = communityService.getGenre(genre);
+			view.addObject("genreList", genreList);
+			return view;
+			
+		}
 		
-		
-		
-		view.addObject("communityList", singList);
-		view.addObject("sortList", sortList);
-		view.addObject("mChart", mChart);
-		*/
-		
-		
-		return view;
 	}
 	
 	////////////////////////////////////////////

@@ -14,7 +14,9 @@ public interface CommunityDao {
 	
 	public CommunityVO selectSing(int id);
 
-	public CommunityVO selectGenre(int id);	
+	
+	//장르별로 선택하기
+	public List<CommunityVO> selectGenre(String genre);	
 	
 	public int insertCommunity(CommunityVO communityVO);
 	

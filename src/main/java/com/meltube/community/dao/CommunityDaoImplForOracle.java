@@ -20,11 +20,17 @@ public class CommunityDaoImplForOracle extends SqlSessionDaoSupport implements C
 		return getSqlSession().selectOne("CommunityDao.selectSing", id);
 	}
 
+	//장르별로 선택하기
 	@Override
-	public CommunityVO selectGenre(int id) {
-		return null;
+	public List<CommunityVO> selectGenre(String genre) {
+		return getSqlSession().selectList("CommunityDao.selectGenre", genre);
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public int insertCommunity(CommunityVO communityVO) {
 		return getSqlSession().insert("CommunityDao.insertCommunity", communityVO);
