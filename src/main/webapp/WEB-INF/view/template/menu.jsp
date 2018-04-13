@@ -60,9 +60,17 @@
 		</a>
 	</span>
 	
+	<span class="box" style="font-size:15pt; margin:55pt">
+		<a href="<c:url value="/melonChartViewAction"/>"> 
+			멜론순위차트 
+		</a>
+	</span>
+	
+	
+	
 	<c:if test = "${empty sessionScope.__USER__ }">
 	<span class="box" style="font-size:15pt; margin:55pt">
-		<a href="<c:url value="/regist"/>" > 
+		<a href="<c:url value="/join"/>" > 
 			회원가입 
 		</a>
 	</span>

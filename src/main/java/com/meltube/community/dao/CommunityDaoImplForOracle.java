@@ -23,6 +23,7 @@ public class CommunityDaoImplForOracle extends SqlSessionDaoSupport implements C
 	//장르별로 선택하기
 	@Override
 	public List<CommunityVO> selectGenre(String genre) {
+		System.out.println( "장ㄹ느늠ㄴㅇㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ"+ genre);
 		return getSqlSession().selectList("CommunityDao.selectGenre", genre);
 	}
 

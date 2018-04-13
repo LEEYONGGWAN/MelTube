@@ -9,6 +9,7 @@
 		INSERT	INTO MELONCHART(
 			
 			TITLE
+			, IMAGE
 			, SINGER
 			, ID
 			, RANK
@@ -16,6 +17,7 @@
 		
 		VALUES (
 			#{mTitle}
+			,#{mImage}
 			, #{mSinger}
 			, MELONCHART_ID_SEQ.NEXTVAL
 			, #{rank}
@@ -27,6 +29,7 @@
 		SELECT  RANK
 				, TITLE mTitle
 				, SINGER mSinger
+				, IMAGE mImage
   		FROM	MELONCHART M
   		ORDER   BY RANK ASC   
 	</select>

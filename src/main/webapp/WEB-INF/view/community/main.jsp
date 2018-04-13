@@ -53,10 +53,7 @@
 			$(location).attr("href", "<c:url value="/join"/>");
 		});
 
-		//test
-		$("#ctest").click(function() {
-			$(location).attr("href", "<c:url value="/getFromMelon"/>");
-		});
+
 
 	});
 </script>
@@ -72,11 +69,6 @@
 
 	</div>
 
-
-	<!-- test -->
-	<div>
-		<input type="button" id="ctest" value="넘어가즈아" />
-	</div>
 	<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px">신규
 		뮤비</div>
 	<!-- 큰틀 -->

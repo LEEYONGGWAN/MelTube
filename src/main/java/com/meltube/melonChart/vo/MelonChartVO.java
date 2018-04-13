@@ -4,6 +4,7 @@ public class MelonChartVO {
 	
 	private int id;
 	
+	private String mImage;
 	private String mTitle;
 	private String mSinger;
 	private String rank;
@@ -40,5 +41,15 @@ public class MelonChartVO {
 	public void setRank(String rank) {
 		this.rank = rank;
 	}
+
+	public String getmImage() {
+		return mImage;
+	}
+
+	public void setmImage(String mImage) {
+		this.mImage = mImage;
+	}
+	
+	
 	
 }

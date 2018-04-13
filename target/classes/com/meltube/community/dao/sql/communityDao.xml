@@ -166,11 +166,13 @@
   	
   
   	<select id="selectGenre"  resultType="CommunityVO"  parameterType="string">
-  		SELECT	C.TITLE
-  				, GENRE
-  				, C.SINGER
-  		FROM	COMMUINITY
-  		WHERE	GENRE=#{genre}
+  		SELECT	C.ID
+  				, TITLE	
+  				, SINGER
+  				, LIKE_IT	likeIt
+  				, SING_IMG
+  		FROM	COMMUNITY C
+  		WHERE	GENRE= #{genre}
  		 	
   		
   	</select>
