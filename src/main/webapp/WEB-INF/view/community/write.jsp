@@ -8,13 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Meltube::뮤비가 보고싶을땐 멜튜브</title>
 
-
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/static/css/writeInput.css"/>" />
-
-
-<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
-	type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value="/static/css/writeInput.css"/>" />
+<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
 <script type="text/javascript">
 	$().ready(function() {
 
@@ -41,7 +36,6 @@
 
 </head>
 <body>
-
 	<jsp:include page="/WEB-INF/view/template/logo.jsp" />
 	<form:form id="writeForm" enctype="multipart/form-data">
 		<div id="wrapper" style="text-align: left">
@@ -62,7 +56,6 @@
 			</div>
 
 
-
 			<div>
 				장 르 :
 					
@@ -73,20 +66,17 @@
 						<option>rock/metal</option>
 						<option>dance</option>
 					</select>
-					
-					
-					
-					
 			</div>
+
 
 			<div>
 				가 수 : <input type="text" id="singer" name="singer" placeholder="가수"
-					value="${communityVO.singer}" />
+					value="${communityVO.singer}"  class="tt"/>
 			</div>
 
 			<div>
 				발매 날짜 : <input type="date" id="releaseDate" name="releaseDate"
-					placeholder="발매 날짜" value="${communityVO.releaseDate}" />
+					placeholder="발매 날짜" value="${communityVO.releaseDate}"  class="tt"/>
 			</div>
 
 			<div>
@@ -113,7 +103,7 @@
 
 
 			<div>
-				<input type="button" id="writeBtn" value="등록" />
+				<input type="button" id="writeBtn" value="등록" class="tt"/>
 			</div>
 
 

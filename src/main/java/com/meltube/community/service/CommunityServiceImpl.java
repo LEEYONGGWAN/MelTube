@@ -30,7 +30,11 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityDao.selectGenre(genre);
 	}
 
-	
+	//검색해서 가져오기
+	@Override
+	public List<CommunityVO> getSearchKeyword(String keyword) {
+		return communityDao.searchEvery(keyword);
+	}
 	
 	@Override
 	public CommunityVO getOne(int id) {
@@ -64,6 +68,8 @@ public class CommunityServiceImpl implements CommunityService {
 	public int readMyCommunitiesCount(int userId) {
 		return communityDao.selectMyCommunitiesCount(userId);
 	}
+
+
 
 
 

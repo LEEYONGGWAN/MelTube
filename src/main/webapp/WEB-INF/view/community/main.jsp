@@ -9,8 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Meltube::뮤비가 보고싶을땐 멜튜브</title>
 
-<script type="text/javascript"
-	src="<c:url value="/static/js/jquery-3.3.1.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js" />"></script>
 <script type="text/javascript">
 	$().ready(function() {
 
@@ -75,14 +74,13 @@
 	<div style="display: inline-block; width: 1800px; height: 1000px;">
 
 		<!-- 왼쪽 최신곡 -->
-		<div style="display: inline-block; vertical-align: top; width: 700px; margin-left: 20px;">
+		<div style="display: inline-block; vertical-align: top; width: 700px; ">
 
 			<ul>
 				<c:forEach items="${communityList}" var="community" end="5">
-					<li style="display: inline-block;">
+					<li style="display: inline-block; width:201px">
 						<span style="display: inline-block;"> 
 							<a href="<c:url value="/view/${community.id}"/>"> 
-								
 								<img style="width: 200px; height: 200px;" alt="사진 img"
 									src="<c:url value="/getS/${community.id}"  />" />
 							</a>

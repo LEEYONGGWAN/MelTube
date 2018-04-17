@@ -190,14 +190,15 @@ public class CommunityController {
 
 	}
 	//////////////////////////////////////////
+	
+	//////////////////////////////////////////
 	@RequestMapping("/distGenre")
-	public ModelAndView viewGenrePage(@RequestParam(value="id", required=false, defaultValue="ballad" ) String id){
+	public ModelAndView viewGenrePage(@RequestParam(value="id", required=false, defaultValue="ballad") String id){
 
 		ModelAndView view = new ModelAndView();
-		view.setViewName("community/divideGenre");
+		view.setViewName("community/genre" );
 		
 		if( id.equals("ballad")   ) {
-			
 			List<CommunityVO> genreList = communityService.getGenre(id);
 			view.addObject("genreList", genreList);
 		}
@@ -226,7 +227,6 @@ public class CommunityController {
 		return view;
 		
 	}
-	
 	////////////////////////////////////////////
 	
 	///////////////////멜론차트페이지//////////////////////////
@@ -243,7 +243,7 @@ public class CommunityController {
 	    	  //doc 에 내가 원하는 페이지의 모든 내용이 담겨져있음
 	    	 Document doc = Jsoup.connect(target).get();
 	         Elements txt = doc.select("tr#lst50.lst50");
-	         storeStockData(txt);
+	         parsingData(txt);
 	         List<MelonChartVO> mChart = melonChartService.getMchart();
 	         view.addObject("mChart", mChart);
 	         
@@ -254,9 +254,7 @@ public class CommunityController {
 	         return view;
 	}
 	
-	
-	
-	private void storeStockData(Elements ele) {
+	private void parsingData(Elements ele) {
 		//받기전에 쌓이니깐 먼저 지워줌
 		melonChartService.removeCommunityMelon();
 		MelonChartVO melonChartVO;
@@ -297,5 +295,34 @@ public class CommunityController {
 			}
 		}
 	}
+	/////////////////////////////////////////////////////////
+	
+	/////////////////////////////////////////////////////////
+	@RequestMapping(value = "/searchView/{keyword}")
+	public ModelAndView doRegistAction(@PathVariable String keyword) {
+
+		ModelAndView view = new ModelAndView();
+		
+		view.setViewName("community/search");
+		
+		List<CommunityVO> searchList = communityService.getSearchKeyword(keyword);
+		
+		
+		
+	/*	
+		List<CommunityVO> singerMatchList
+		List<CommunityVO> titleMatchList
+	*/
+		
+		view.addObject("SearchList", searchList);
+		
+		
+		
+		
+		return view;
+	
+	
+	}
+	/////////////////////////////////////////////////////////
 	
 }

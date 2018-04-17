@@ -58,6 +58,8 @@
 			<div style="margin-left:60px">
 				<table>
 							<tr>
+							
+								<th style="width:60px"></th>
 								<th style="width:400px">제목</th>
 								<th style="width:320px">가수</th>
 								<th style="width:50px">♥</th>
@@ -67,8 +69,11 @@
 							<c:forEach items="${genreList}" var="genre">
 		
 								<tr>
+								
 									<td style="text-align: left">
 										<img style="width: 60px; height: 60px; " alt="사진 img" src="<c:url value="/getS/${genre.id}"  />" />
+									</td>
+									<td>
 										<a style="text-algin:top" href="<c:url value="/view/${genre.id}"/>"> ${genre.title} </a>
 									</td>
 		

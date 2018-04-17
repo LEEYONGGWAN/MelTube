@@ -173,12 +173,20 @@
   				, SING_IMG
   		FROM	COMMUNITY C
   		WHERE	GENRE= #{genre}
- 		 	
-  		
   	</select>
   	
   	
-  	
+	<select id="searchEvery" resultType="CommunityVO" parameterType="string">
+		SELECT	C.ID
+				, TITLE
+				, GENRE
+				, SINGER
+				, SING_IMG
+		FROM	COMMUNITY C
+		WHERE	TITLE=#{keyword}
+		OR		SINGER=#{keyword}
+		OR		GENRE=#{keyword}
+	</select>  	
   	
   	
   	

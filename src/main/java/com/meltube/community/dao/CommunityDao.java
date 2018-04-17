@@ -14,6 +14,8 @@ public interface CommunityDao {
 	
 	public CommunityVO selectSing(int id);
 
+	//노래 서치 하기
+	public List<CommunityVO> searchEvery(String keyword);
 	
 	//장르별로 선택하기
 	public List<CommunityVO> selectGenre(String genre);	
