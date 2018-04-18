@@ -42,6 +42,11 @@ public class CommunityController {
 		this.melonChartService = melonChartService;
 	}
 
+	
+	
+	
+	
+	
 	/////////////////////// 메인화면 보기 ///////////////////////////////////
 	@RequestMapping("/")
 	public ModelAndView viewListPage() {
@@ -61,8 +66,15 @@ public class CommunityController {
 
 		return view;
 	}
-	////////////////////////////////////////////////////////////////////////
-
+	//////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	////////////////////////좋아요순으로 정렬하기////////////////////////////
 	@RequestMapping("/sortList")
 	public ModelAndView viewSortListPage() {
 		ModelAndView mav = new ModelAndView();
@@ -75,7 +87,15 @@ public class CommunityController {
 
 		return mav;
 	}
-
+	//////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
 	////////////////// 글쓰기//////////////////////////////////////////////
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String viewWritePage() {
@@ -105,6 +125,14 @@ public class CommunityController {
 	}
 	/////////////////////////////////////////////////////////////////////////////
 
+	
+	
+	
+	
+	
+	
+	
+	
 	//////////// 좋아요/////////////////////////
 	@RequestMapping("/likeIt/{id}")
 	public String rCount(@PathVariable int id) {
@@ -116,6 +144,16 @@ public class CommunityController {
 	}
 	//////////////////////////////////////////
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/////////////////////////긁 읽기 기능/////////////////////////////
 	@RequestMapping("/read/{id}")
 	public String viewCount(@PathVariable int id) {
 
@@ -140,6 +178,13 @@ public class CommunityController {
 	}
 	//////////////////////////////////////////////////////////////////////////
 
+	
+	
+	
+	
+	
+	
+	/////////////////////////이미지,동영상 보이기///////////////////////////////
 	@RequestMapping("/get/{id}")
 	public void download(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 
@@ -174,7 +219,16 @@ public class CommunityController {
 	}
 	//////////////////////////////////////////
 
-	//////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/////////////////////장르별 나누기/////////////////////
 	@RequestMapping("/distGenre")
 	public ModelAndView viewGenrePage(
 			@RequestParam(value = "id", required = false, defaultValue = "ballad") String id) {
@@ -209,6 +263,13 @@ public class CommunityController {
 	}
 	////////////////////////////////////////////
 
+	
+	
+	
+	
+	
+	
+	
 	/////////////////// 멜론차트페이지//////////////////////////
 	@RequestMapping("/melonChartViewAction")
 	public ModelAndView viewMChart() {
@@ -271,7 +332,12 @@ public class CommunityController {
 	}
 	/////////////////////////////////////////////////////////
 
-	/////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	///////////////////////노래 찾기 기능//////////////////////////////////
 	@RequestMapping(value = "/searchView/{keyword}")
 	public ModelAndView doRegistAction(@PathVariable String keyword) {
 
@@ -312,10 +378,6 @@ public class CommunityController {
 			
 			
 		}
-		
-		
-		
-		
 		view.addObject("singerList", singerMatchList);
 		view.addObject("titleList", titleMatchList);
 		view.addObject("lyList", lyricsMatchList);

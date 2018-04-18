@@ -20,6 +20,15 @@ input#loginBtn , #join{
 	width:70px;
 }
 
+input#logout{
+    background-color: #BCE55C;
+    border: none;
+	decoration: none;
+    cursor: pointer;
+
+}
+
+
 div#rightBigDiv{
 	display:inline-block;
 	vertical-align:top;
@@ -28,6 +37,15 @@ div#rightBigDiv{
 }
 
 td{
-	font-size:12px;
 	text-align:center;
+	border-bottom-color: #EAEAEA;
+	border-bottom-style: solid;
+	font-size:12px;	
+}
+
+th{
+	border-bottom-color: #9FC93C;
+	border-bottom-style: solid;
+	color: #9FC93C;
+	font-size:12px;
 }

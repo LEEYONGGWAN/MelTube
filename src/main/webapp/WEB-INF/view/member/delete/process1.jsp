@@ -14,8 +14,6 @@
 <link type="text/css" rel="stylesheet" href =" <c:url value=" /static/css/button.css "/> "/>
 <link type="text/css" rel="stylesheet" href =" <c:url value=" /static/css/delete.css "/> "/>
 
-
-
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 
@@ -36,16 +34,7 @@
 				"method": "post",
 				"action": "<c:url value="/delete/process2"/>"
 			}).submit();
-		
-		
-		
 		});
-	
-	
-	
-	
-	
-	
 	});
 
 

@@ -55,6 +55,7 @@
 		});
 
 
+		
 
 	});
 </script>
@@ -66,7 +67,7 @@
 
 
 <body>
-	<div style="width: 1200px;">
+	<div style="width: 1200px; ">
 		<!-- img -->
 		<jsp:include page="/WEB-INF/view/template/logo.jsp" />
 		<jsp:include page="/WEB-INF/view/template/menu.jsp" />
@@ -141,14 +142,14 @@
 
 							<div style="display: inline-block">
 								<div>
-									${sessionScope.__USER__.nickname}님(${sessionScope.__USER__.email})
+									${sessionScope.__USER__.nickname}님[${sessionScope.__USER__.email}]
 								</div>
 
 								<div style="margin-top: 5px">환영합니다.</div>
 							</div>
 							<div style="display: inline-block; vertical-align: top">
-								<a href="<c:url value="/logout" />"> <input type="button"
-									id="logout" value="로그아웃" style="width: 100px; height: 50px" />
+								<a href="<c:url value="/logout" />"> 
+									<input type="button" id="logout" value="로그아웃" style="width: 100px; height: 50px" />
 								</a>
 							</div>
 
