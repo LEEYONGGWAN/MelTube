@@ -182,10 +182,11 @@
 				, GENRE
 				, SINGER
 				, SING_IMG
+				, LYRICS lyrics
 		FROM	COMMUNITY C
-		WHERE	TITLE=#{keyword}
-		OR		SINGER=#{keyword}
-		OR		GENRE=#{keyword}
+		WHERE	TITLE LIKE '%' || #{keyword} || '%'
+		OR		SINGER LIKE '%' || #{keyword} || '%'
+		OR		LYRICS LIKE '%' || #{keyword} || '%'
 	</select>  	
   	
   	

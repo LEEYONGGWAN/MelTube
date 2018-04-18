@@ -3,16 +3,16 @@
 .box > a{
 	cursor: pointer; 
 	color: #000000;
-	font-size : 18pt;
+	font-size : 15pt;
 }
 
 .box:HOVER > a{
 	color : #86E57F;
-	font-size : 18pt;
+	font-size : 15pt;
 }
 
 span.box{
-	 margin-left : 45pt;
-	 margin-right : 45pt;
+	 margin-left : 36pt;
+	 margin-right : 36pt;
 	 font-size : 15pt;
 }

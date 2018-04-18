@@ -14,8 +14,20 @@
 	
 		$("#searchBtn").click(function() {
 			var something = $("#searchBox").val();
+			console.log(something);
 			$(location).attr("href", "<c:url value='/searchView/" + something + "'/>");
 		});
+		
+		
+		//TODO 엔터 눌렀을때 넘어가는 기능 추가ㅠㅠ
+		$("#searchBox").keyup(function(event){
+			if(event.key =="Enter"){
+				var something = $("#searchBox").val();
+				console.log(something);
+				$(location).attr("href", "<c:url value='/searchView/" + something + "'/>");
+			}
+		});
+		
 	
 	});
   

@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+img.main{
+	width:156px;
+	height:156px;
+}
+
+li{
+	display:inline-block;
+	width:156px
+}
+
+div#six{
+	display:inline-block;
+	vertical-align:top;
+	width:550px;
+}
+
+input#loginBtn , #join{
+	width:70px;
+}
+
+div#rightBigDiv{
+	display:inline-block;
+	vertical-align:top;
+	width:370px; 
+	margin-left:20px;
+}
+
+td{
+	font-size:12px;
+	text-align:center;
+}

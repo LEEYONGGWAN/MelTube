@@ -1,0 +1,23 @@
+@charset "UTF-8";
+div.greenLine{
+	
+}
+
+
+th{
+	border-bottom-color: #9FC93C;
+	border-bottom-style: solid;
+	color: #9FC93C;
+	font-size:12px;
+}
+
+td{
+	border-bottom-color: #EAEAEA;
+	border-bottom-style: solid;
+	font-size:12px;	
+}
+
+img{
+	width:55px;
+	height:55px;
+}

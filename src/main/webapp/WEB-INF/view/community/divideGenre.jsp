@@ -62,7 +62,7 @@
 								<th style="width:60px"></th>
 								<th style="width:400px">제목</th>
 								<th style="width:320px">가수</th>
-								<th style="width:50px">♥</th>
+								<th style="width:50px">좋아요</th>
 		
 							</tr>
 							
@@ -79,7 +79,7 @@
 		
 									<td style="text-align: center"> ${genre.singer} </td>
 									
-									<td style="text-align: center"> ${genre.likeIt} </td>
+									<td style="text-align: center"> ♥${genre.likeIt} </td>
 								</tr>
 		
 							</c:forEach>

@@ -30,9 +30,9 @@
 </style>
   
 
-<div style="margin-top: 10pt">
-
-
+<div style="margin-top: 10pt; width:950px" >
+ 
+ 
 	<c:if test = "${not empty sessionScope.__USER__ }">
 	<span class="box">
 		<a href="<c:url value="/write"/>"> 
@@ -80,5 +80,7 @@
 	</span>
 	</c:if>
 	
-	<hr/>
+	<div style="margin:10px; border-bottom-color: #9FC93C; border-bottom-style: solid;"></div>	
+	
+	
 </div>

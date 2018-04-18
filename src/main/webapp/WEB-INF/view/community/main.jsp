@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Meltube::뮤비가 보고싶을땐 멜튜브</title>
 
+<link rel="stylesheet" type="text/css" href="<c:url value="/static/css/mainCss.css"/>" />
+
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js" />"></script>
 <script type="text/javascript">
 	$().ready(function() {
@@ -58,9 +60,12 @@
 </script>
 
 </head>
+
+
+
+
+
 <body>
-
-
 	<div style="width: 1200px;">
 		<!-- img -->
 		<jsp:include page="/WEB-INF/view/template/logo.jsp" />
@@ -68,21 +73,21 @@
 
 	</div>
 
-	<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px">신규
-		뮤비</div>
+	<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px; color:">
+		신규 뮤비
+	</div>
 	<!-- 큰틀 -->
 	<div style="display: inline-block; width: 1800px; height: 1000px;">
 
-		<!-- 왼쪽 최신곡 -->
-		<div style="display: inline-block; vertical-align: top; width: 700px; ">
+		<!-- 왼쪽 최신 6곡 -->
+		<div id="six">
 
 			<ul>
 				<c:forEach items="${communityList}" var="community" end="5">
-					<li style="display: inline-block; width:201px">
+					<li>
 						<span style="display: inline-block;"> 
 							<a href="<c:url value="/view/${community.id}"/>"> 
-								<img style="width: 200px; height: 200px;" alt="사진 img"
-									src="<c:url value="/getS/${community.id}"  />" />
+								<img class="main" alt="사진 img" src="<c:url value="/getS/${community.id}"  />" />
 							</a>
 
 						</span>
@@ -91,16 +96,10 @@
 				</c:forEach>
 			</ul>
 
-		</div>
+		</div>   
 
 		<!-- 오른쪽 아이디&좋아요 많은곡  -->
-		<div
-			style="display: inline-block; vertical-align: top; width: 400px; margin-left: 20px;">
-
-
-
-
-
+		<div id="rightBigDiv">
 			<form:form modelAttribute="loginForm">
 				<!-- 로그인 박스-->
 				<div>
@@ -127,14 +126,12 @@
 							</div>
 
 
-							<div
-								style="display: inline-block; width: 90x; vertical-align: top;">
-								<input type="button" id="loginBtn" value="로그인"
-									style="width: 70px;" />
+							<div style="display: inline-block; width: 90x; vertical-align: top;">
+								<input type="button" id="loginBtn" value="로그인"/>
 							</div>
 
 							<div style="display: inline-block;">
-								<input type="button" id="join" value="회원가입" style="width: 70px;" />
+								<input type="button" id="join" value="회원가입"/>
 							</div>
 
 
@@ -166,7 +163,7 @@
 
 			<!-- 좋아요 많은곡 -->
 			<div
-				style="vertical-align: top; width: 480px; border-top: 1px solid #000; margin-top: 10px">
+				style="vertical-align: top; width: 370px; border-top: 2px solid #EAEAEA; margin-top: 10px">
 
 				<div style="text-align: center; font: bold">멜튜브 차트</div>
 
@@ -182,13 +179,16 @@
 					<c:forEach items="${sortList}" var="sort">
 
 						<tr>
-							<td style="text-align: center">${sort.likeIt}</td>
-							<td style="text-align: center">${sort.genre}</td>
+							<td>♥${sort.likeIt}</td>
+							<td>${sort.genre}</td>
 
-							<td style="text-align: center"><a
-								href="<c:url value="/view/${sort.id}"/>">${sort.title}</a></td>
+							<td>
+								<a href="<c:url value="/view/${sort.id}"/>">
+									${sort.title}
+								</a>
+							</td>
 
-							<td style="text-align: center">${sort.singer}</td>
+							<td>${sort.singer}</td>
 						</tr>
 
 					</c:forEach>
