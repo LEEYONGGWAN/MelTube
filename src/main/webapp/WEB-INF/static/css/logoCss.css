@@ -1,0 +1,50 @@
+@charset "UTF-8";
+input#searchBox{
+	display:inline-block;
+	vertical-align:top; 
+	width:300px; 
+	margin-left:40px; 
+	margin-top:20px;
+}
+
+input#searchBtn{
+	display:inline-block;
+	vertical-align:top; 
+	margin-top:20px;
+}
+
+a#loginbox{
+	color: #FF0000;
+	font-size: 12pt;
+	vertical-align:top; 
+	margin-top:20px;
+	margin-left:300px;
+	
+} 
+
+span#loginbox{
+	vertical-align:top;
+	display:inline-block;
+}
+
+div#melIcon{
+	display:inline-block;
+	margin-left:20px;
+}   
+
+
+div#aftLogin{
+	vertical-aligin:top;
+	display:inline-block;
+	font-size: 12pt;
+	margin-left:300px;
+}
+
+div#menuBar{
+	display:inline-block;
+	widith:20px;
+	height:20px;
+	margin-left:10px;
+	vertical-align:top;
+	margin-top:16px;
+}

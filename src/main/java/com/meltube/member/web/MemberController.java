@@ -44,9 +44,10 @@ public class MemberController {
 	public String viewLoginPage(HttpSession session) {
 
 		if (session.getAttribute(Member.USER) != null) {
-			return "redirect:/";
+			return "community/main";
 		}
-		return "community/main";
+		
+		return "member/login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -62,7 +63,7 @@ public class MemberController {
 			return "redirect:/";
 		}
 
-		return "redirect:/";
+		return "member/login";
 
 	}
 ////////////////////////////////////////////////////////////////////////////

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-		눈물난다 안된다.
+		
 	</div>
 </body>
 </html>

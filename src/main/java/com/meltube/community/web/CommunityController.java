@@ -74,6 +74,7 @@ public class CommunityController {
 	
 	
 	
+	
 	////////////////////////좋아요순으로 정렬하기////////////////////////////
 	@RequestMapping("/sortList")
 	public ModelAndView viewSortListPage() {

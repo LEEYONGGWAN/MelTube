@@ -15,26 +15,6 @@
 <script type="text/javascript">
 	$().ready(function() {
 
-		$("#loginBtn").click(function() {
-
-			if ($("#email").val() == "") {
-				alert("아이디를 입력해주세요!");
-				$(location).attr("href", "<c:url value="/"/>");
-
-			}
-
-			else if ($("#password").val() == "") {
-				alert("비밀번호를 입력해주세요!");
-				$(location).attr("href", "<c:url value="/"/>");
-			}
-
-			var loginForm = $("#loginForm");
-			loginForm.attr({
-				"method" : "post",
-				"action" : "<c:url value="/login"/>"
-			});
-			loginForm.submit();
-		});
 
 		$("#writeBtn").click(function() {
 			var writeForm = $("#writeForm");
@@ -49,17 +29,58 @@
 		$("#goToWrite").click(function() {
 			$(location).attr("href", "<c:url value="/write"/>");
 		});
-		//회원가입
-		$("#join").click(function() {
-			$(location).attr("href", "<c:url value="/join"/>");
-		});
-
-
 		
 
 	});
 </script>
 
+<style> 
+.hover_wrapper{
+position:relative;
+width:156px;
+height:156px;
+overflow:hidden
+} 
+
+.hover_cont{
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+	width:100%;
+	line-height:156px;
+	color:#FFFFFF;
+	text-align:center;
+} 
+ 
+.hover_cont::before{
+  	content:'';
+	display:block;
+ 	position:absolute; 
+	top:0;
+	left:0;
+	z-index:-1;
+	opacity:0.4;
+	width:100%;
+	height:100%; 
+	background:#070707;
+	} 
+	  
+.hover_wrapper:hover .hover_cont{
+	display:block
+} 
+
+   A:link {TEXT-DECORATION:none}
+   A:visited{TEXT-DECORATION:none}
+   A:hover{TEXT-DECORATION:none}
+
+
+a.imgToView:-webkit-any-link{
+	color:#FFFFFF;
+}
+
+</style> 
 </head>
 
 
@@ -67,31 +88,37 @@
 
 
 <body>
-	<div style="width: 1200px; ">
-		<!-- img -->
+
+	
+	<!-- 큰틀 -->
+	<div style="width: 1800px; height: 1000px;">
+				<!-- img -->
 		<jsp:include page="/WEB-INF/view/template/logo.jsp" />
 		<jsp:include page="/WEB-INF/view/template/menu.jsp" />
-
-	</div>
-
-	<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px; color:">
-		신규 뮤비
-	</div>
-	<!-- 큰틀 -->
-	<div style="display: inline-block; width: 1800px; height: 1000px;">
-
-		<!-- 왼쪽 최신 6곡 -->
+		<!-- 맨위 최신 5곡 -->
+		<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px; color:">
+			신규 뮤비
+		</div>
+		
 		<div id="six">
 
 			<ul>
-				<c:forEach items="${communityList}" var="community" end="5">
+				<c:forEach items="${communityList}" var="community" end="4">
 					<li>
-						<span style="display: inline-block;"> 
+						<div class="hover_wrapper" style="display: inline-block;"> 
 							<a href="<c:url value="/view/${community.id}"/>"> 
 								<img class="main" alt="사진 img" src="<c:url value="/getS/${community.id}"  />" />
 							</a>
-
-						</span>
+							
+							<div class="hover_cont">
+								<a class="imgToView" href= "<c:url value="/view/${community.id}"/>">
+									${community.title}
+								</a>
+							</div>
+							
+						</div>
+						    
+						
 					</li>
 
 				</c:forEach>
@@ -99,97 +126,75 @@
 
 		</div>   
 
-		<!-- 오른쪽 아이디&좋아요 많은곡  -->
-		<div id="rightBigDiv">
-			<form:form modelAttribute="loginForm">
-				<!-- 로그인 박스-->
-				<div>
-					<div style="display: inline-block; width: 300px">
 
-						<c:if test="${empty sessionScope.__USER__ }">
+		
+		
+		
+		
+		<!-- 중간 인기 5곡 -->
+		<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px; color:">
+			인기
+		</div>
+		
+		<div id="six">
 
-							<div>
-								<span style="width: 40px;"> ID : </span> 
-								<span> 
-								<input
-									type="text" id="email" name="email" placeholder="ID(email)"
-									style="margin-left: 9px" />
-								</span>
-							</div>
-
-							<div>
-								<span style="width: 40px;">PW : </span> 
-								<span> 
-								<input
-									type="password" id="password" name="password"
-									placeholder="Password" />
-								</span>
-							</div>
-
-
-							<div style="display: inline-block; width: 90x; vertical-align: top;">
-								<input type="button" id="loginBtn" value="로그인"/>
-							</div>
-
-							<div style="display: inline-block;">
-								<input type="button" id="join" value="회원가입"/>
-							</div>
-
-
-						</c:if>
-
-						<c:if test="${not empty sessionScope.__USER__ }">
-
-							<div style="display: inline-block">
+			<ul>
+				<c:forEach items="${sortList}" var="sort" end="4">
+					<li>
+						<div class="hover_wrapper" style="display: inline-block;"> 
+							<a href="<c:url value="/view/${sort.id}"/>"> 
+								<img class="main" alt="사진 img" src="<c:url value="/getS/${sort.id}"  />" />
+							</a>
+							
+							<div class="hover_cont">
 								<div>
-									${sessionScope.__USER__.nickname}님[${sessionScope.__USER__.email}]
-								</div>
-
-								<div style="margin-top: 5px">환영합니다.</div>
-							</div>
-							<div style="display: inline-block; vertical-align: top">
-								<a href="<c:url value="/logout" />"> 
-									<input type="button" id="logout" value="로그아웃" style="width: 100px; height: 50px" />
+								<a class="imgToView" href= "<c:url value="/view/${sort.id}"/>">
+									${sort.title}
 								</a>
+								</div>
 							</div>
+							
+						</div>
+						    
+						
+					</li>
 
+				</c:forEach>
+			</ul>
 
-						</c:if>
+		</div> 
+		
 
-
-
-					</div>
-				</div>
-			</form:form>
-
+		
+		<div id="rightBigDiv">
+			
 			<!-- 좋아요 많은곡 -->
-			<div
-				style="vertical-align: top; width: 370px; border-top: 2px solid #EAEAEA; margin-top: 10px">
+			<div style="vertical-align: top; width: 370px; border-top: 2px solid #EAEAEA;">
 
 				<div style="text-align: center; font: bold">멜튜브 차트</div>
 
 
 				<table>
 					<tr>
-						<th>좋아요</th>
+						<th style="width:45px">좋아요</th>
 						<th>장르</th>
-						<th>제목</th>
-						<th>가수</th>
+						<th style="width:150px">제목</th>
+						<th style="width:90px">가수</th>
 
 					</tr>
 					<c:forEach items="${sortList}" var="sort">
 
 						<tr>
-							<td>♥${sort.likeIt}</td>
+							<td style="width:45px">♥${sort.likeIt}</td>
 							<td>${sort.genre}</td>
 
 							<td>
-								<a href="<c:url value="/view/${sort.id}"/>">
+								<a style="width:150px" href="<c:url value="/view/${sort.id}"/>">
 									${sort.title}
 								</a>
 							</td>
 
-							<td>${sort.singer}</td>
+							<td style="width:90px">${sort.singer}</td>
 						</tr>
 
 					</c:forEach>

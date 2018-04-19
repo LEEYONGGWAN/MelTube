@@ -26,7 +26,7 @@
 <style>
    A:link {TEXT-DECORATION:none}
    A:visited{TEXT-DECORATION:none}
-   A:hover{TEXT-DECORATION:underline}
+   A:hover{TEXT-DECORATION:none}
 </style>
   
 
@@ -51,7 +51,7 @@
 	
 	<!-- TODO 이벤트 페이지 -->
 	<span class="box" >
-		<a href="<c:url value="/login"/>"> 
+		<a href="<c:url value="http://pds.joins.com/news/component/htmlphoto_mmdata/200608/htm_2006080118332730003010-001.JPG"/>"> 
 			이벤트 
 		</a>
 	</span>
