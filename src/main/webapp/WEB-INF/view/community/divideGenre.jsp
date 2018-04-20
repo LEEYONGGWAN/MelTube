@@ -25,10 +25,13 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/template/logo.jsp" />
+
+
+
+
+	<div>
 	<jsp:include page="/WEB-INF/view/template/menu.jsp" />
-	
-	
-	<div id="wrapper">
+	<div id="wrapper" style="display:inline-block">
 			<div style="margin-top: 20px;">
 				<!-- a 태그에 아이디 줘서 스크립트에서 같이 값을 넘기자 ㅇㅋ? -->
 				<span style="margin-left:30px">
@@ -117,7 +120,7 @@
 			
 			
 	</div>
-	
+	</div>
 	
 </body>
 </html>

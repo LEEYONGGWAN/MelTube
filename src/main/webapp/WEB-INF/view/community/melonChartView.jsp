@@ -26,10 +26,11 @@
 	<div id="wrapper">
 		<jsp:include page="/WEB-INF/view/template/logo.jsp" />
 		<jsp:include page="/WEB-INF/view/template/menu.jsp" />
-		<h3 style="margin-left:270px">실시간 멜론차트 순위(50위)</h3>
-
-		<div>
+	
+		<div style="display:inline-block">
+			<h3 style="margin-left:270px">실시간 멜론차트 순위(50위)</h3>
 			<table>
+					
 				<tr>
 					<th style="width:50px">순위</th>
 					<th style="width:80px"></th>
@@ -48,7 +49,7 @@
 						</td>
 						
 						<td style="text-align:left">
-							<img style="width: 60px; height: 60px;" src="${mc.mImage}" alt="image"/>
+							<img class="m" style="width: 60px; height: 60px;" src="${mc.mImage}" alt="image"/>
 						</td>
 						
 						<td>

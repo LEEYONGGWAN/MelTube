@@ -19,12 +19,14 @@
 	});
 </script>
 </head>
-
+  
 
 <body>
 	<jsp:include page="/WEB-INF/view/template/logo.jsp" />
+	
+	
 	<jsp:include page="/WEB-INF/view/template/menu.jsp" />
-	<div id="wrapper" style="width: 800px">
+	<div id="wrapper" style="width: 800px; display:inline-block">
 
 
 		<div style="text-align: center">검색결과 입니다.</div>
@@ -46,7 +48,7 @@
 					<c:forEach items="${singerList}" var="singerList">
 						<tr>
 							<td style="text-align: left; ">
-								<img alt="사진 img" src="<c:url value="/getS/${singerList.id}"  />" />
+								<img class="m" alt="사진 img" src="<c:url value="/getS/${singerList.id}"  />" />
 							</td>
 							<td>
 								<a style="text-algin: top" href="<c:url value="/view/${singerList.id}"/>">
@@ -93,7 +95,7 @@
 
 					<tr>
 						<td style="text-align: left">
-							<img alt="사진 img" src="<c:url value="/getS/${titleList.id}"  />" />
+							<img class="m" alt="사진 img" src="<c:url value="/getS/${titleList.id}"  />" />
 						</td>
 
 						<td>
@@ -140,7 +142,7 @@
 
 					<tr>
 						<td style="text-align: left">
-							<img alt="사진 img" src="<c:url value="/getS/${lyList.id}"  />" />
+							<img class="m" alt="사진 img" src="<c:url value="/getS/${lyList.id}"  />" />
 						</td>
 
 						<td>

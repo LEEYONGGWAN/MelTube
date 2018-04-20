@@ -11,15 +11,7 @@
 <title>Meltube::뮤비가 보고싶을땐 멜튜브</title>
 <script type="text/javascript"  src="<c:url value="/static/js/jquery-3.3.1.min.js"/>" ></script>
 <script type="text/javascript">
-
-
-
-
 </script>
-
-
-
-
 </head>
 
 
@@ -27,11 +19,11 @@
 
 <body>
 		<jsp:include page="/WEB-INF/view/template/logo.jsp"/>
-		<div id="wrapper">
-			
-			
-
-			
+	
+	
+	
+		<jsp:include page="/WEB-INF/view/template/menu.jsp"/>
+		<div id="wrapper" style="display:inline-block">
 			<!-- 왼쪽 (영상칸) -->
 			<div style="display:inline-block; width:440px;">
 			

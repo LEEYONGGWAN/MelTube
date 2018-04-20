@@ -5,22 +5,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/menuCss.css"/>" />
 <script type="text/javascript" src= "<c:url value="/static/js/jquery-3.3.1.min.js" />" ></script>
 <script type="text/javascript">
-/* 	$().ready(function() {
-		$(".box").on("mouseover", function() {
-			$(this).animate({
-				font : #FFF;
-			});
-		});
-			
-		
-		$(".box").on("mouseout", function() {
-			$(this).animate({
-				font-color : #f3f3f3;
-			});
-		});
-	}); */
-
-
 </script>
 
 <style>
@@ -30,7 +14,7 @@
 </style>
   
 
-<div style="margin-top: 10pt; width:950px" >
+<%-- <div style="margin-top: 10pt; width:950px" >
  
  
 	<c:if test = "${not empty sessionScope.__USER__ }">
@@ -42,14 +26,12 @@
 	</c:if>
   
 
-	<!-- TODO 장르 리스트 뜨게 하기 -->
 	<span class="box" >
 		<a href="<c:url value="/distGenre"/>">
 			 장르별 보기 
 		</a>
 	</span>
 	
-	<!-- TODO 이벤트 페이지 -->
 	<span class="box" >
 		<a href="<c:url value="http://pds.joins.com/news/component/htmlphoto_mmdata/200608/htm_2006080118332730003010-001.JPG"/>"> 
 			이벤트 
@@ -83,4 +65,59 @@
 	<div style="margin:10px; border-bottom-color: #9FC93C; border-bottom-style: solid;"></div>	
 	
 	
-</div>
+</div> --%>
+
+
+		<div id="sideBar" style="display: inline-block; vertical-align: top; height:2000px" >
+			<div class="hide">
+				
+				<div class="menu">
+					<img class="menuImg" src="<c:url value="/static/img/home.PNG"/>" />
+					<a href="<c:url value="/"/>"> 홈 </a>
+				
+				</div>
+				
+				
+				<div class="menu">
+					<img class="menuImg" src="<c:url value="/static/img/music.PNG"/>" />
+					<a href="<c:url value="/distGenre"/>"> 장르별 보기 </a>
+				</div>
+
+
+				<div class="menu">
+					<img class="menuImg" src="<c:url value="/static/img/event.PNG"/>" />
+					<a href="<c:url value="http://pds.joins.com/news/component/htmlphoto_mmdata/200608/htm_2006080118332730003010-001.JPG"/>">
+					이벤트 
+				</a>
+			 	</div>
+				
+				
+				<div class="menu">
+					<img class="menuImg" src="<c:url value="/static/img/melon.PNG"/>" />
+					<a href="<c:url value="/melonChartViewAction"/>"> 멜론순위차트 </a>
+				</div>
+
+				<c:if test="${not empty sessionScope.__USER__ }">
+					 <div class="menu">
+					 <img class="menuImg" src="<c:url value="/static/img/write.PNG"/>" />
+					 <a href="<c:url value="/write"/>"> 노래등록  </a>
+					 </div>
+				</c:if>
+
+				<c:if test="${empty sessionScope.__USER__ }">
+					<div class="menu">
+					<img class="menuImg" src="<c:url value="/static/img/menuBar.PNG"/>" />
+					<a href="<c:url value="/join"/>"> 회원가입 </a>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty sessionScope.__USER__ }">
+					 <div class="menu">
+					 <img class="menuImg" src="<c:url value="/static/img/byebye.PNG"/>" />
+					 <a href="<c:url value="/delete/process1/" />"> 회원탈퇴 </a>
+					 </div>
+				</c:if>
+				
+				
+			</div>
+		</div>

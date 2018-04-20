@@ -13,14 +13,9 @@
 							$(location).attr("href", "<c:url value="/"/>");
 						});
 
-						/* 		$("#searchBox").keypress(function(event){
-						 if( event.key == "Enter" ){
-						 var something = $("#searchBox").val();
-						 console.log(something);
-						 alert("ok");
-						 $(location).attr("href", "<c:url value='/searchView/" + something + "'/>");
-						 }
-						 });  */
+						$("#menuBar").click(function() {
+							$(".hide").toggle();
+						});
 
 						$("#searchBox").keypress(function(event) {
 							if (event.which == 13) {
@@ -29,19 +24,14 @@
 							}
 						});
 
-						$("#searchBtn")
-								.click(
-										function() {
-											var something = $("#searchBox")
-													.val();
-											console.log(something);
-											$(location)
-													.attr("href",
-															"<c:url value='/searchView/" + something + "'/>");
-										});
+						$("#searchBtn").click(function() {
+							var something = $("#searchBox").val();
+							console.log(something);
+							$(location).attr("href", 
+											 "<c:url value='/searchView/" + something + "'/>");
+						});
 
 						$("#loginBtn").click(function() {
-
 							if ($("#email").val() == "") {
 								alert("아이디를 입력해주세요!");
 								$(location).attr("href", "<c:url value="/"/>");
@@ -61,10 +51,7 @@
 							loginForm.submit();
 						});
 
-						//회원가입
-						$("#join").click(function() {
-							$(location).attr("href", "<c:url value="/join"/>");
-						});
+						
 
 					});
 </script>
@@ -72,11 +59,11 @@
 
 <div style="width: 1000px;">
 	<form:form modelAttribute="searchForm">
-		
+
 		<div id="menuBar">
-			<img src="<c:url value="/static/img/menuBar.PNG"/>"/>
+			<img src="<c:url value="/static/img/menuBar.PNG"/>" />
 		</div>
-				
+
 		<div id="melIcon">
 			<img src="<c:url value="/static/img/mel.png"/>" style="width: 100px;" />
 		</div>
@@ -107,5 +94,5 @@
 		</c:if>
 
 	</form:form>
-
+	<div style="margin:10px; border-bottom-color: #9FC93C; border-bottom-style: solid;"></div>
 </div>

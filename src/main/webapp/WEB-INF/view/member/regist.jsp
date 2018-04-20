@@ -222,7 +222,10 @@
                                            
 <body>
 	<jsp:include page="/WEB-INF/view/template/logo.jsp"/>
-	<div class="limiter">
+	<jsp:include page="/WEB-INF/view/template/menu.jsp" />
+	
+	
+	<div style="display:inline-block" class="limiter">
 		<div class="container-login100" style="background-image: url('/static/img/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form class="login100-form validate-form" id="registForm">
@@ -270,36 +273,6 @@
 			</div>
 		</div>
 	</div>
-
-
-	<%-- <div id="wrapper" style="text-align:center;">
-		<form:form modelAttribute="registForm">
-
-			<div>
-				<input type="email" id="email" name="email" placeholder="Email" />
-			</div>
-
-			<div>
-				<input type="text" id="nickname" name="nickname" placeholder="Nickname"  />
-			</div>
-
-			<div>
-				<input type="password" id="password" name="password" placeholder="Password" />
-			</div>
-
-			<div>
-				<input type="password" id="password-confirm" placeholder="Password" />
-			</div>
-
-			
-
-
-			<div style="text-align: center;">
-				<input type="button" id="registBtn" value="회원가입"/>
-			</div>
-		</form:form>
-	</div> --%>
-	
 
 </body>
 </html>
