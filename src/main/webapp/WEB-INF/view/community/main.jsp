@@ -120,7 +120,9 @@ a.imgToView:-webkit-any-link {
 
 			<!-- 맨위 최신 5곡 -->
 			<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px; color:">
-				신규 뮤비</div>
+				<img style="width:20px; height:20px"src="<c:url value="/static/img/new.png"/>" />
+				신규 뮤비
+			</div>
 
 			<div id="six">
 
@@ -156,6 +158,7 @@ a.imgToView:-webkit-any-link {
 
 			<!-- 중간 인기 5곡 -->
 			<div style="margin-left: 60px; margin-top: 30px; margin-bottm: 0px; color:">
+				<img style="width:20px; height:20px"src="<c:url value="/static/img/hot.png"/>" />
 				인기
 			</div>
 

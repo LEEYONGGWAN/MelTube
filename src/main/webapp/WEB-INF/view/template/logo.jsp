@@ -57,7 +57,7 @@
 </script>
 
 
-<div style="width: 1000px;">
+<div style="width: 1000px; margin:0px">
 	<form:form modelAttribute="searchForm">
 
 		<div id="menuBar">
@@ -81,8 +81,8 @@
 		<c:if test="${not empty sessionScope.__USER__ }">
 			<div id="aftLogin">
 				<div>(${sessionScope.__USER__.nickname}님)</div>
-				<div>
-					<a href="<c:url value="/logout"/>">로그아웃 </a>
+				<div id="aftLogout">
+					<a id="aftLogout" href="<c:url value="/logout"/>">로그아웃 </a>
 				</div>
 			</div>
 		</c:if>

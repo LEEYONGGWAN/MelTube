@@ -1,26 +1,11 @@
 @charset "UTF-8";
 
-/* .box > a{
-	cursor: pointer; 
-	color: #000000;
-	font-size : 15pt;
-}
-
-.box:HOVER > a{
-	color : #86E57F;
-	font-size : 15pt;
-}
-
-span.box{
-	 margin-left : 36pt;
-	 margin-right : 36pt;
-	 font-size : 15pt;
-} */
-
 div.menu{
 	margin-top:20px;
-	margin-right:20px;
-	text-align:center;
+	margin-left:15px;
+	margin-right:15px; 
+	
+	text-align:left;
 }
 
 img.menuImg{
@@ -28,6 +13,8 @@ img.menuImg{
 	height:20px;
 }
 
-div.sideBar{
-	
-} 
+div#sideBar{
+	background-color:#FCFCFC;
+	vertical-align:top;
+	margin:-10px;
+}     

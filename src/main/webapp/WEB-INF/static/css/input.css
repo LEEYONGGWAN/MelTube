@@ -1,4 +1,4 @@
-input {
+input#password {
     padding: 10px;
     font-size: 13pt;
     width: 400px;

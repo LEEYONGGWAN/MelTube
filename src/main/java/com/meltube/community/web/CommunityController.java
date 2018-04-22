@@ -1,5 +1,6 @@
 package com.meltube.community.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,8 @@ import com.meltube.community.service.CommunityService;
 import com.meltube.community.vo.CommunityVO;
 import com.meltube.melonChart.service.MelonChartService;
 import com.meltube.melonChart.vo.MelonChartVO;
+import com.meltube.member.constants.Member;
+import com.meltube.member.vo.MemberVO;
 import com.meltube.util.DownloadUtil;
 
 @Controller
@@ -139,6 +143,8 @@ public class CommunityController {
 	public String rCount(@PathVariable int id) {
 
 		if (communityService.increaseR(id)) {
+
+			System.out.println("asdf");
 			return "redirect:/view/" + id;
 		}
 		return "redirect:/";
@@ -193,7 +199,7 @@ public class CommunityController {
 		String filename = community.getDisplayFilename();
 		// String img = community.getSingImg();
 
-		DownloadUtil download = new DownloadUtil("D:/uploadFiles/" + filename);
+		DownloadUtil download = new DownloadUtil("C:\\Users\\YongGwan\\Desktop\\uploadFiles\\" + filename);
 
 		try {
 			download.download(request, response, filename);
@@ -209,7 +215,7 @@ public class CommunityController {
 		CommunityVO community = communityService.getOne(id);
 		String img = community.getSingImg();
 
-		DownloadUtil download = new DownloadUtil("D:/uploadImg/" + img);
+		DownloadUtil download = new DownloadUtil("C:\\Users\\YongGwan\\Desktop\\uploadImg\\" + img);
 
 		try {
 			download.download(request, response, img);
@@ -388,4 +394,160 @@ public class CommunityController {
 	}
 	/////////////////////////////////////////////////////////
 
+	
+	
+	
+	//////////////////////////////수정하기/////////////////////////////////////////
+	@RequestMapping(value = "/modify/{id}", method=RequestMethod.GET)
+	public ModelAndView viewModifyPage(@PathVariable int id, HttpSession session) {
+		
+
+		MemberVO member = (MemberVO) session.getAttribute(Member.USER);
+		CommunityVO community = communityService.getOne(id);
+
+		int userId = member.getId();
+
+		if (userId != community.getUserId()) {
+			return new ModelAndView("error/404");
+		}
+		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("community/write");
+		view.addObject("communityVO", community);
+		view.addObject("mode", "modify");
+		return view;
+	}
+	
+	
+	@RequestMapping(value = "/modify/{id}", method=RequestMethod.POST)
+	public String doModifyAction(@PathVariable int id,
+									HttpSession session,
+									HttpServletRequest request,
+									@ModelAttribute("writeForm") @Valid CommunityVO communityVO,
+									Errors errors) {
+		
+		
+		MemberVO member = (MemberVO)session.getAttribute(Member.USER);
+		CommunityVO originalVO = communityService.getOne(id);
+		
+		System.out.println("멤바 아이디" + member.getId());
+		System.out.println("오리지날 아이디" + originalVO.getUserId());
+		if( member.getId() != originalVO.getUserId() ) {
+			return "member/tt";
+		}
+		
+		if( errors.hasErrors()) {
+			return "redirect:/modify/" + id;
+		}
+		
+		CommunityVO newCommunity = new CommunityVO();
+		newCommunity.setId( originalVO.getId() );
+		newCommunity.setUserId( member.getId() );
+		
+		boolean isModify =false;
+		
+		String asIs = "";
+		String toBe = "";
+		
+		
+		
+		// 1.IP 변경확인
+		String ip = request.getRemoteAddr();
+		if( !ip.equals(originalVO.getRequestIp())) {
+			//달라진 ip만 newCommunity 여기에 넣어준다
+			newCommunity.setRequestIp(ip);
+			isModify =true;
+			asIs +="IP :" + originalVO.getRequestIp() + "<br/>";
+			toBe +="IP :" + ip + "<br/>";
+		}
+		
+		//2. 제목 변경확인
+		if( !originalVO.getTitle().equals( communityVO.getTitle())) {
+			newCommunity.setTitle(communityVO.getTitle());
+			isModify =true;
+			asIs +="Title :" + originalVO.getTitle() + "<br/>";
+			toBe +="Title :" + communityVO.getTitle() + "<br/>";
+			
+		}
+		
+		//3. 가사 변경확인
+		if( !originalVO.getLyrics().equals( communityVO.getLyrics())) {
+			newCommunity.setLyrics(communityVO.getLyrics());
+			isModify =true;
+			asIs +="Lyrics :" + originalVO.getLyrics() + "<br/>";
+			toBe +="Lyrics :" + communityVO.getLyrics() + "<br/>";
+			
+		}
+		
+		//4. 파일 변경확인
+		//아래 이프문은 데이터가 있는지 없는지 알려줌 데이터의 이름의 길이로 해서 널이면 당연히 0임
+		if( communityVO.getDisplayFilename().length() >0) {
+			File file = new File("C:\\\\Users\\\\YongGwan\\\\Desktop\\\\uploadFiles\\\\" + communityVO.getDisplayFilename());
+			file.delete();
+			communityVO.setDisplayFilename("");
+		}
+		else {
+			communityVO.setDisplayFilename(originalVO.getDisplayFilename());
+		}
+		
+		communityVO.save();
+		
+		if(!originalVO.getDisplayFilename().equals(communityVO.getDisplayFilename() )) {
+				newCommunity.setDisplayFilename( communityVO.getDisplayFilename() );
+				isModify = true;
+				
+				asIs +="File :" + originalVO.getDisplayFilename() + "<br/>";
+				toBe +="File :" + communityVO.getDisplayFilename() + "<br/>";
+			
+		}
+		
+		//5. 노래 이미지 변경확인
+		if( communityVO.getSingImg().length() >0) {
+			File file = new File("C:\\\\Users\\\\YongGwan\\\\Desktop\\\\uploadImg\\\\" + communityVO.getSingImg());
+			file.delete();
+			communityVO.setSingImg("");
+		}
+		else {
+			communityVO.setSingImg(originalVO.getSingImg());
+		}
+		
+		communityVO.imgSave();
+		
+		if(!originalVO.getSingImg().equals(communityVO.getSingImg() )) {
+				newCommunity.setSingImg( communityVO.getSingImg() );
+				isModify = true;
+				
+				asIs +="File :" + originalVO.getSingImg() + "<br/>";
+				toBe +="File :" + communityVO.getSingImg() + "<br/>";
+			
+		}
+		
+		
+		//6. 변경이 없는지 확인
+		if( isModify) {
+			//6. update 하는 service code 호출
+			communityService.updateCommunity(newCommunity);
+		}
+		
+		return "redirect:/view/" +id;
+	}
+	///////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

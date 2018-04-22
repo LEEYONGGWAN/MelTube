@@ -27,4 +27,6 @@ public interface CommunityService {
 	
 	public int readMyCommunitiesCount(int userId);
 	
+	public boolean updateCommunity(CommunityVO communityVO);
+	
 }

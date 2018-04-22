@@ -9,19 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Meltube::뮤비가 보고싶을땐 멜튜브</title>
 
-<link type="text/css" rel="stylesheet"
-	href=" <c:url value=" /static/css/common.css "/> " />
-<link type="text/css" rel="stylesheet"
-	href=" <c:url value=" /static/css/input.css "/> " />
-<link type="text/css" rel="stylesheet"
-	href=" <c:url value=" /static/css/button.css "/> " />
-<link type="text/css" rel="stylesheet"
-	href=" <c:url value=" /static/css/delete.css "/> " />
+<link type="text/css" rel="stylesheet" href=" <c:url value=" /static/css/common.css "/> " />
+<link type="text/css" rel="stylesheet" href=" <c:url value=" /static/css/input.css "/> " />
+<link type="text/css" rel="stylesheet" href=" <c:url value=" /static/css/button.css "/> " />
+<link type="text/css" rel="stylesheet" href=" <c:url value=" /static/css/delete.css "/> " />
 
 
 
-<script type="text/javascript"
-	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready(function() {
 		$("#moveLoginBtn").click(function(){

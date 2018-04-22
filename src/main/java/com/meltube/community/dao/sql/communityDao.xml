@@ -99,6 +99,7 @@
 			, GENRE
 			, DISPLAY_FILE_NAME
 			, SING_IMG
+			, lIKE_IT
 		)
 		VALUES	(
 			COMMUNITY_ID_SEQ.NEXTVAL
@@ -112,6 +113,7 @@
 			, #{genre}
 			, #{displayFilename}
 			, #{singImg}
+			, 0
 		)  		
   	</insert>
   	
@@ -188,6 +190,25 @@
 		OR		SINGER LIKE '%' || #{keyword} || '%'
 		OR		LYRICS LIKE '%' || #{keyword} || '%'
 	</select>  	
+	
+	<update id="updateCommunity" parameterType = "CommunityVO">
+  		UPDATE	COMMUNITY
+  		SET		RELEASE_DATE = SYSDATE
+  				<if test="requestIp !=null and requestIp !='' ">
+  				, REQUEST_IP = #{requestIp}
+  				</if>
+  				<if test="title !=null and title !='' ">
+  				, TITLE = #{title}
+  				</if>
+  				<if test="lyrics !=null and lyrics !='' ">
+  				, LYRICS = #{lyrics}
+  				</if>
+  				, DISPLAY_FILE_NAME = #{displayFilename}
+  				, SING_IMG = #{singImg}
+  				
+  		WHERE	ID = #{id}
+  		AND		USER_ID = #{userId}	
+  	</update>
   	
   	
   	

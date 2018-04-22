@@ -75,4 +75,13 @@ public class CommunityDaoImplForOracle extends SqlSessionDaoSupport implements C
 		return 0;
 	}
 
+	//수정하기
+	@Override
+	public int updateCommunity(CommunityVO communityVO) {
+		return getSqlSession().update("CommunityDao.updateCommunity", communityVO);
+	}
+
+	
+	
+	
 }

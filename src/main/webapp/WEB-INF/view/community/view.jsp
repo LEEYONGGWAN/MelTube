@@ -11,6 +11,9 @@
 <title>Meltube::뮤비가 보고싶을땐 멜튜브</title>
 <script type="text/javascript"  src="<c:url value="/static/js/jquery-3.3.1.min.js"/>" ></script>
 <script type="text/javascript">
+
+
+
 </script>
 </head>
 
@@ -69,6 +72,12 @@
 					<a href="<c:url value="/likeIt/${community.id}"/>">  
 						<input type="button" id="backBtn" value="좋아요♥ "  /> 
 					</a>
+					
+					
+					<c:if test="${ sessionScope.__USER__.id == community.memberVO.id }">
+					<a href="<c:url value ="/modify/${ community.id }"/>">수정하기</a>
+<!-- 					<input type="button" id="deleteBtn" value="삭제하기" />
+ -->				</c:if>
 					
 			</div>	
 			

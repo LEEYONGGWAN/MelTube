@@ -32,6 +32,9 @@ div#melIcon{
 	margin-left:20px;
 }   
 
+a#aftLogout{
+	color: #FF0000;
+}
 
 div#aftLogin{
 	vertical-aligin:top;

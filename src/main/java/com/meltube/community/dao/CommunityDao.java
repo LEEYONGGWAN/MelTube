@@ -33,7 +33,7 @@ public interface CommunityDao {
 	
 	public int deleteMyCommunities(int userId);
 	
-	
+	public int updateCommunity(CommunityVO communityVO);
 	
 	
 

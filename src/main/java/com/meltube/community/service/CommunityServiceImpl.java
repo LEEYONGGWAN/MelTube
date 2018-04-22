@@ -69,6 +69,11 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityDao.selectMyCommunitiesCount(userId);
 	}
 
+	@Override
+	public boolean updateCommunity(CommunityVO communityVO) {
+		return communityDao.updateCommunity(communityVO) > 0;
+	}
+
 
 
 

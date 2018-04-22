@@ -15,13 +15,43 @@
 <script type="text/javascript">
 	$().ready(function() {
 
+		<c:if test="${mode == 'modify' && not empty communityVO.displayFilename}">
+		$("#file").closest("div").hide();
+		</c:if>
+
+		$("#displayFilename").change(function() {
+			var isChecked = $(this).prop("checked");
+
+			if (isChecked) {
+				$("label[for=displayFilename]").css({
+					"text-decoration-line" : "line-through",
+					"text-decoration-style" : "double",
+					"text-decoration-color" : "#FF0000"
+
+				});
+				$("#file").closest("div").show();
+			} else {
+				$("label[for=displayFilename]").css({
+					"text-decoration" : "none"
+				});
+				$("#file").closest("div").hide();
+			}
+		});
+
 		$("#writeBtn").click(function() {
 
+			var mode = "${mode}";
+			if (mode == "modify") {
+				var url = "<c:url value="/modify/${communityVO.id}"/>";
+			} else {
+				var url = "<c:url value="/write"/>"
+			}
+
 			var writeForm = $("#writeForm");
-			console.log(file);
 			writeForm.attr({
 				"method" : "post",
-				"action" : "<c:url value="/write"/>"
+				"action" : url
+
 			});
 
 			writeForm.submit();
@@ -55,13 +85,13 @@
 				</div>
 
 				<div style="width: 800px">
-					<div style="display:inline-block">
+					<div style="display: inline-block">
 						앨범명 : <input type="text" id="album" name="album" placeholder="앨범"
 							value="${communityVO.album}" />
 					</div>
-  
 
-					<div style="display:inline-block">
+
+					<div style="display: inline-block">
 						장 르 : <select id="genre" name="genre">
 							<option>ballad</option>
 							<option>rap&hiphop</option>
@@ -72,46 +102,58 @@
 					</div>
 
 				</div>
-						<div style="width: 800px">
-							가 수 : <input type="text" id="singer" name="singer"
-								placeholder="가수" value="${communityVO.singer}" class="tt" />
-						</div>
+				<div style="width: 800px">
+					가 수 : <input type="text" id="singer" name="singer" placeholder="가수"
+						value="${communityVO.singer}" class="tt" />
+				</div>
 
-						<div style="width: 800px">
-							발매 날짜 : <input type="date" id="releaseDate" name="releaseDate"
-								placeholder="발매 날짜" value="${communityVO.releaseDate}"
-								class="tt" />
-						</div>
+				<div style="width: 800px">
+					발매 날짜 : <input type="date" id="releaseDate" name="releaseDate"
+						placeholder="발매 날짜" value="${communityVO.releaseDate}" class="tt" />
+				</div>
 
-						<div style="width: 800px">
-							<span style="vertical-align: top; margin-top: 7px"> 가 사 :
-							</span> <span> <textarea id="lyrics" name="lyrics"
-									placeholder="가사" value="${communityVO.lyrics}"
-									style="width:531px; height:220px"></textarea>
-							</span>
+				<div style="width: 800px">
+					<span style="vertical-align: top; margin-top: 7px"> 가 사 : </span> <span>
+						<textarea id="lyrics" name="lyrics" placeholder="가사"
+							value="${communityVO.lyrics}" style="width: 531px; height: 220px"></textarea>
+					</span>
 
-						</div>
+				</div>
 
-						<div>
-							<input type="hidden" id="userId" name="userId"
-								value="${sessionScope.__USER__.id}" />
-						</div>
-
-						<div>
-							동영상 파일 : <input type="file" id="file" name="file" />
-						</div>
+				<div>
+					<input type="hidden" id="userId" name="userId"
+						value="${sessionScope.__USER__.id}" />
+				</div>
 
 
 
-
-						<div>
-							<input type="button" id="writeBtn" value="등록" class="tt" />
-						</div>
-
-
+				<c:if
+					test="${ mode == 'modify' && not empty communityVO.displayFilename }">
+					<div>
+						<input type="checkbox" id="displayFilename" name="displayFilename"
+							value="${ communityVO.displayFilename }" /> <label
+							for="displayFilename"> ${ communityVO.displayFilename } </label>
 
 
 					</div>
+				</c:if>
+
+
+				<div>
+					동영상 파일 : <input type="file" id="file" name="file" />
+				</div>
+
+
+
+
+				<div>
+					<input type="button" id="writeBtn" value="등록" class="tt" />
+				</div>
+
+
+
+
+			</div>
 		</form:form>
 	</div>
 

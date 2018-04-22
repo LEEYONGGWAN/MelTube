@@ -21,6 +21,7 @@ public class CommunityVO {
 	private String lyrics;
 	
 	private String requestIp;
+	
 	private String displayFilename;
 	//노래 사진
 	private String singImg;
@@ -137,6 +138,9 @@ public class CommunityVO {
 	}
 
 	public String getSingImg() {
+		if (singImg == null) {
+			singImg = "";
+		}
 		return singImg;
 	}
 
@@ -173,7 +177,7 @@ public class CommunityVO {
 
 			displayFilename = file.getOriginalFilename();
 
-			File newFile = new File("D:\\uploadFiles/" + file.getOriginalFilename());
+			File newFile = new File("C:\\\\Users\\\\YongGwan\\\\Desktop\\\\uploadFiles\\\\" + file.getOriginalFilename());
 			
 			
 			
@@ -197,7 +201,7 @@ public class CommunityVO {
 
 			singImg = sImg.getOriginalFilename();
 
-			File newSImg = new File("D:\\uploadImg/" + sImg.getOriginalFilename());
+			File newSImg = new File("C:\\\\Users\\\\YongGwan\\\\Desktop\\\\uploadImg\\\\" + sImg.getOriginalFilename());
 			
 			try {
 				sImg.transferTo(newSImg);
